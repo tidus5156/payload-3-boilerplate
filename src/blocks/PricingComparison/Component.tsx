@@ -1,10 +1,10 @@
 import React from 'react'
-import type { PricingComparisonBlock } from '@/payload-types'
+import type { PricingComparisonBlock as PricingComparisonBlockType } from '@/payload-types'
 import { Check, X } from 'lucide-react'
 import { CMSLink } from '@/components/Link'
 import { cn } from '@/utilities/cn'
 
-export const PricingComparisonBlock: React.FC<PricingComparisonBlock> = ({ heading, subheading, plans }) => {
+export const PricingComparisonBlock: React.FC<PricingComparisonBlockType> = ({ heading, subheading, plans }) => {
   return (
     <div className="container my-16">
       {(heading || subheading) && (

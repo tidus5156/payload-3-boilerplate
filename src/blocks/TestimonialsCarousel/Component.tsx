@@ -1,10 +1,10 @@
 import React from 'react'
-import type { TestimonialsCarouselBlock, Testimonial } from '@/payload-types'
+import type { TestimonialsCarouselBlock as TestimonialsCarouselBlockType, Testimonial } from '@/payload-types'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { Star } from 'lucide-react'
 
-export const TestimonialsCarouselBlock: React.FC<TestimonialsCarouselBlock> = async ({
+export const TestimonialsCarouselBlock: React.FC<TestimonialsCarouselBlockType> = async ({
   heading,
   subheading,
   testimonials: selectedTestimonials,
@@ -66,7 +66,7 @@ export const TestimonialsCarouselBlock: React.FC<TestimonialsCarouselBlock> = as
 
             {/* Quote */}
             <blockquote className="text-base mb-6 flex-grow">
-              "{testimonial.quote}"
+              &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
 
             {/* Client Info */}

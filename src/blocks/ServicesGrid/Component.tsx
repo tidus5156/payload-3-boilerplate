@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ServicesGridBlock } from '@/payload-types'
+import type { ServicesGridBlock as ServicesGridBlockType } from '@/payload-types'
 import { Home, Key, Wrench, DollarSign, Users, FileText } from 'lucide-react'
 import { CMSLink } from '@/components/Link'
 import { Check } from 'lucide-react'
@@ -13,7 +13,7 @@ const iconMap = {
   file: FileText,
 }
 
-export const ServicesGridBlock: React.FC<ServicesGridBlock> = ({ heading, subheading, services }) => {
+export const ServicesGridBlock: React.FC<ServicesGridBlockType> = ({ heading, subheading, services }) => {
   return (
     <div className="container my-16">
       {(heading || subheading) && (

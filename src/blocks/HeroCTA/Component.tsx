@@ -1,5 +1,5 @@
 import React from 'react'
-import type { HeroCTABlock } from '@/payload-types'
+import type { HeroCTABlock as HeroCTABlockType } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { cn } from '@/utilities/cn'
 
@@ -10,7 +10,7 @@ const backgroundColors = {
   lightGray: 'bg-gray-100 text-gray-900',
 }
 
-export const HeroCTABlock: React.FC<HeroCTABlock> = ({
+export const HeroCTABlock: React.FC<HeroCTABlockType> = ({
   headline,
   subheadline,
   primaryCTA,

@@ -1,5 +1,5 @@
 import React from 'react'
-import type { IconGridBlock } from '@/payload-types'
+import type { IconGridBlock as IconGridBlockType } from '@/payload-types'
 import {
   Shield,
   DollarSign,
@@ -30,7 +30,7 @@ const iconMap = {
   map: MapPin,
 }
 
-export const IconGridBlock: React.FC<IconGridBlock> = ({ heading, subheading, items, columns = 'three' }) => {
+export const IconGridBlock: React.FC<IconGridBlockType> = ({ heading, subheading, items, columns = 'three' }) => {
   const gridCols = {
     two: 'md:grid-cols-2',
     three: 'md:grid-cols-3',
@@ -46,7 +46,7 @@ export const IconGridBlock: React.FC<IconGridBlock> = ({ heading, subheading, it
         </div>
       )}
 
-      <div className={`grid grid-cols-1 ${gridCols[columns]} gap-8`}>
+      <div className={`grid grid-cols-1 ${gridCols[columns || 'three']} gap-8`}>
         {items?.map((item, index) => {
           const Icon = iconMap[item.icon as keyof typeof iconMap]
 
