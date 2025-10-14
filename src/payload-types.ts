@@ -133,7 +133,18 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | IconGridBlock
+    | ServicesGridBlock
+    | TestimonialsCarouselBlock
+    | PricingComparisonBlock
+    | HeroCTABlock
+  )[];
   meta?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -628,6 +639,141 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IconGridBlock".
+ */
+export interface IconGridBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  items: {
+    icon:
+      | 'shield'
+      | 'dollar'
+      | 'clock'
+      | 'users'
+      | 'home'
+      | 'phone'
+      | 'check'
+      | 'star'
+      | 'tool'
+      | 'file'
+      | 'lock'
+      | 'map';
+    title: string;
+    description: string;
+    id?: string | null;
+  }[];
+  columns?: ('two' | 'three' | 'four') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'iconGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ServicesGridBlock".
+ */
+export interface ServicesGridBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  services: {
+    title: string;
+    description: string;
+    features?:
+      | {
+          feature: string;
+          id?: string | null;
+        }[]
+      | null;
+    icon?: ('home' | 'key' | 'tool' | 'dollar' | 'users' | 'file') | null;
+    ctaText?: string | null;
+    ctaUrl?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'servicesGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsCarouselBlock".
+ */
+export interface TestimonialsCarouselBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  testimonials?: (number | Testimonial)[] | null;
+  showOnlyFeatured?: boolean | null;
+  limit?: number | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonialsCarousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  clientName: string;
+  rating: number;
+  clientPhoto?: (number | null) | Media;
+  propertyType?: ('single-family' | 'condo' | 'townhome' | 'multi-family') | null;
+  neighborhood?: string | null;
+  numberOfProperties?: number | null;
+  clientSince?: number | null;
+  quote: string;
+  videoUrl?: string | null;
+  featured?: boolean | null;
+  approved?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingComparisonBlock".
+ */
+export interface PricingComparisonBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  plans: {
+    name: string;
+    price: string;
+    priceDescription?: string | null;
+    description?: string | null;
+    features: {
+      feature: string;
+      included?: boolean | null;
+      id?: string | null;
+    }[];
+    highlighted?: boolean | null;
+    ctaText?: string | null;
+    ctaUrl?: string | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingComparison';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroCTABlock".
+ */
+export interface HeroCTABlock {
+  headline: string;
+  subheadline?: string | null;
+  primaryCTA: {
+    text: string;
+    url: string;
+  };
+  secondaryCTA?: {
+    text?: string | null;
+    url?: string | null;
+  };
+  backgroundColor?: ('deepNavy' | 'skyBlue' | 'warmGold' | 'lightGray') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'heroCTA';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "comments".
  */
 export interface Comment {
@@ -802,26 +948,6 @@ export interface ContactSubmission {
     referrer?: string | null;
   };
   internalNotes?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "testimonials".
- */
-export interface Testimonial {
-  id: number;
-  clientName: string;
-  rating: number;
-  clientPhoto?: (number | null) | Media;
-  propertyType?: ('single-family' | 'condo' | 'townhome' | 'multi-family') | null;
-  neighborhood?: string | null;
-  numberOfProperties?: number | null;
-  clientSince?: number | null;
-  quote: string;
-  videoUrl?: string | null;
-  featured?: boolean | null;
-  approved?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1142,6 +1268,106 @@ export interface PagesSelect<T extends boolean = true> {
               form?: T;
               enableIntro?: T;
               introContent?: T;
+              id?: T;
+              blockName?: T;
+            };
+        iconGrid?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              items?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              columns?: T;
+              id?: T;
+              blockName?: T;
+            };
+        servicesGrid?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              services?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          id?: T;
+                        };
+                    icon?: T;
+                    ctaText?: T;
+                    ctaUrl?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonialsCarousel?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              testimonials?: T;
+              showOnlyFeatured?: T;
+              limit?: T;
+              id?: T;
+              blockName?: T;
+            };
+        pricingComparison?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              plans?:
+                | T
+                | {
+                    name?: T;
+                    price?: T;
+                    priceDescription?: T;
+                    description?: T;
+                    features?:
+                      | T
+                      | {
+                          feature?: T;
+                          included?: T;
+                          id?: T;
+                        };
+                    highlighted?: T;
+                    ctaText?: T;
+                    ctaUrl?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        heroCTA?:
+          | T
+          | {
+              headline?: T;
+              subheadline?: T;
+              primaryCTA?:
+                | T
+                | {
+                    text?: T;
+                    url?: T;
+                  };
+              secondaryCTA?:
+                | T
+                | {
+                    text?: T;
+                    url?: T;
+                  };
+              backgroundColor?: T;
               id?: T;
               blockName?: T;
             };

@@ -4,21 +4,72 @@ export const homepageData = {
   metaTitle: 'Allay Property Management | Stress Less. Earn More. | Metro Atlanta',
   metaDescription: 'Professional property management for Metro Atlanta rental properties. Guaranteed rent, quality tenants, 24/7 support. Get your free rental analysis today.',
   hero: {
-    headline: 'Stress Less. Earn More.',
-    subheadline: 'Full-service property management for Metro Atlanta rental properties. Maximize your returns while we handle everything.',
-    primaryCTA: {
-      text: 'Get Free Rental Analysis',
-      url: '/contact',
+    type: 'lowImpact',
+    richText: {
+      root: {
+        type: 'root',
+        children: [
+          {
+            type: 'heading',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Stress Less. Earn More.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            tag: 'h1',
+            version: 1,
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'text',
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Full-service property management for Metro Atlanta rental properties. Maximize your returns while we handle everything.',
+                version: 1,
+              },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+          },
+        ],
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        version: 1,
+      },
     },
-    secondaryCTA: {
-      text: 'View Our Services',
-      url: '/services',
-    },
-    trustBar: [
-      { text: '500+ Properties Managed' },
-      { text: '98% Tenant Satisfaction' },
-      { text: '12-Month Rent Guarantee' },
-      { text: 'RE/MAX Backed' },
+    links: [
+      {
+        link: {
+          type: 'custom',
+          url: '/contact',
+          label: 'Get Free Rental Analysis',
+          appearance: 'default',
+        },
+      },
+      {
+        link: {
+          type: 'custom',
+          url: '/services',
+          label: 'View Our Services',
+          appearance: 'outline',
+        },
+      },
     ],
   },
   layout: [
@@ -180,5 +231,5 @@ export const homepageData = {
       backgroundColor: 'deepNavy',
     },
   ],
-  status: 'published',
+  _status: 'published',
 }

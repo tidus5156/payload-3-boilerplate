@@ -7,6 +7,11 @@ import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
+import { IconGrid } from '../../blocks/IconGrid/config'
+import { ServicesGrid } from '../../blocks/ServicesGrid/config'
+import { TestimonialsCarousel } from '../../blocks/TestimonialsCarousel/config'
+import { PricingComparison } from '../../blocks/PricingComparison/config'
+import { HeroCTA } from '../../blocks/HeroCTA/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -77,7 +82,18 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                IconGrid,
+                ServicesGrid,
+                TestimonialsCarousel,
+                PricingComparison,
+                HeroCTA,
+              ],
               required: true,
             },
           ],

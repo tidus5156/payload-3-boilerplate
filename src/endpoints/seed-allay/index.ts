@@ -104,13 +104,17 @@ export const seedAllay = async ({
     // 6. Seed Homepage
     payload.logger.info('🏠 Seeding Allay Homepage...')
     try {
-      await payload.create({
+      const createdPage = await payload.create({
         collection: 'pages',
         data: homepageData as any,
       })
-      payload.logger.info('✅ Allay Homepage seeded')
-    } catch (error) {
-      payload.logger.error('❌ Error seeding homepage:', error)
+      payload.logger.info('✅ Allay Homepage seeded with ID:', createdPage.id)
+    } catch (error: any) {
+      payload.logger.error('❌ Error seeding homepage:')
+      payload.logger.error('Error message:', error.message)
+      payload.logger.error('Error stack:', error.stack)
+      payload.logger.error('Full error:', JSON.stringify(error, null, 2))
+      throw error
     }
 
     payload.logger.info('🎉 Allay Property Management seed completed!')
