@@ -33,7 +33,6 @@ const createAdmin = async () => {
       data: {
         email,
         password,
-        role: 'admin',
       },
     })
 
