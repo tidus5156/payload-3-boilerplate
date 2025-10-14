@@ -27,6 +27,7 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { seed } from './endpoints/seed'
+import { seedAllay } from './endpoints/seed-allay'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -112,6 +113,18 @@ export default buildConfig({
         try {
           await seed({ payload: req.payload, req });
           return Response.json({ success: true, message: 'Database seeded successfully' });
+        } catch (error: any) {
+          return Response.json({ success: false, error: error.message }, { status: 500 });
+        }
+      }
+    },
+    {
+      path: '/seed-allay',
+      method: 'get',
+      handler: async (req) => {
+        try {
+          await seedAllay({ payload: req.payload, req });
+          return Response.json({ success: true, message: 'Allay Property Management data seeded successfully' });
         } catch (error: any) {
           return Response.json({ success: false, error: error.message }, { status: 500 });
         }
