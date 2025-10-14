@@ -54,7 +54,7 @@ export const TestimonialsCarouselBlock: React.FC<TestimonialsCarouselBlockType> 
 
                 {/* Quote */}
                 <p className="font-body text-base text-charcoal italic mb-6 leading-relaxed">
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </p>
 
                 {/* Client Info */}

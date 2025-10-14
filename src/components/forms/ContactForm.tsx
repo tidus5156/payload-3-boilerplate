@@ -151,7 +151,7 @@ export const ContactForm: React.FC = () => {
       {submitStatus === 'success' && (
         <div className="p-4 bg-green-50 border border-green-200 rounded-md">
           <p className="text-green-800 font-body text-sm">
-            Thank you for contacting us! We'll get back to you within 24 hours.
+            Thank you for contacting us! We&apos;ll get back to you within 24 hours.
           </p>
         </div>
       )}
