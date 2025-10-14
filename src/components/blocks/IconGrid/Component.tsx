@@ -1,5 +1,5 @@
 import React from 'react'
-import type { IconGridBlock as IconGridBlockType } from '@/payload-types'
+
 import {
   Shield,
   DollarSign,
@@ -30,7 +30,7 @@ const iconMap = {
   map: MapPin,
 }
 
-export const IconGridBlock: React.FC<IconGridBlockType> = ({
+export const IconGridBlock: React.FC<any> = ({
   heading,
   subheading,
   items,

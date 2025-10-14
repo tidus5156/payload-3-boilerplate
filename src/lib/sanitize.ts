@@ -16,7 +16,7 @@ export function sanitizeHtml(
 ): string {
   if (!dirty) return ''
 
-  const defaultConfig: DOMPurify.Config = {
+  const defaultConfig: any = {
     ALLOWED_TAGS: options?.allowedTags || [
       'p',
       'br',
@@ -48,7 +48,7 @@ export function sanitizeHtml(
     defaultConfig.ADD_ATTR = ['target', 'rel']
   }
 
-  return DOMPurify.sanitize(dirty, defaultConfig)
+  return String(DOMPurify.sanitize(dirty, defaultConfig))
 }
 
 /**
@@ -143,7 +143,7 @@ export function sanitizeObject<T extends Record<string, any>>(
 ): T {
   if (!obj || typeof obj !== 'object') return obj
 
-  const sanitized = { ...obj }
+  const sanitized: Record<string, any> = { ...obj }
 
   for (const [key, value] of Object.entries(sanitized)) {
     if (typeof value === 'string') {
@@ -173,7 +173,7 @@ export function sanitizeObject<T extends Record<string, any>>(
     }
   }
 
-  return sanitized
+  return sanitized as T
 }
 
 /**
@@ -184,7 +184,7 @@ export function sanitizeObject<T extends Record<string, any>>(
 export function stripHtml(html: string): string {
   if (!html) return ''
 
-  return DOMPurify.sanitize(html, { ALLOWED_TAGS: [] })
+  return String(DOMPurify.sanitize(html, { ALLOWED_TAGS: [] }))
 }
 
 /**

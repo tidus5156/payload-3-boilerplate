@@ -101,7 +101,7 @@ export const Header: React.FC = () => {
           {/* CTA Button - Desktop */}
           <div className="hidden lg:block">
             <Link href="/contact">
-              <Button variant="primary" size="md">
+              <Button variant="primary" size="default">
                 Get Free Analysis
               </Button>
             </Link>
@@ -149,7 +149,7 @@ export const Header: React.FC = () => {
             ))}
             <div className="pt-4">
               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="primary" size="md" className="w-full">
+                <Button variant="primary" size="default" className="w-full">
                   Get Free Analysis
                 </Button>
               </Link>

@@ -77,10 +77,18 @@ export const seed = async ({
       }
     })
 
-    // clear the database
-    for (const global of globals) {
+    // clear the database - only update globals that have navItems
+    if (globals.includes('header')) {
       await payload.updateGlobal({
-        slug: global,
+        slug: 'header',
+        data: {
+          navItems: []
+        }
+      })
+    }
+    if (globals.includes('footer')) {
+      await payload.updateGlobal({
+        slug: 'footer',
         data: {
           navItems: []
         }

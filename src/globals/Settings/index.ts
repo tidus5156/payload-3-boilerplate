@@ -5,7 +5,7 @@ export const Settings: GlobalConfig = {
   access: {
     read: () => true,
     update: ({ req: { user } }) => {
-      return user?.role === 'admin'
+      return !!user
     },
   },
   fields: [

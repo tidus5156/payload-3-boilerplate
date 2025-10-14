@@ -1,5 +1,5 @@
 import React from 'react'
-import type { HeroCTABlock as HeroCTABlockType } from '@/payload-types'
+
 import { Button } from '@/components/ui'
 import Link from 'next/link'
 
@@ -17,7 +17,7 @@ const textColors = {
   lightGray: 'text-deepNavy',
 }
 
-export const HeroCTABlock: React.FC<HeroCTABlockType> = ({
+export const HeroCTABlock: React.FC<any> = ({
   headline,
   subheadline,
   primaryCTA,

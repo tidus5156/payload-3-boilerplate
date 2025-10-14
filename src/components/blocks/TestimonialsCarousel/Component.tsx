@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import type { TestimonialsCarouselBlock as TestimonialsCarouselBlockType, Testimonial } from '@/payload-types'
+import type { Testimonial } from "@/payload-types"
 import { Card, CardContent } from '@/components/ui'
 import { Media } from '@/components/Media'
 import { Star } from 'lucide-react'
 
-export const TestimonialsCarouselBlock: React.FC<TestimonialsCarouselBlockType> = ({
+export const TestimonialsCarouselBlock: React.FC<any> = ({
   heading,
   subheading,
   testimonials,

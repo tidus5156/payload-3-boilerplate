@@ -16,7 +16,7 @@ export const Testimonials: CollectionConfig = {
       return !!user
     },
     delete: ({ req: { user } }) => {
-      return user?.role === 'admin'
+      return !!user
     },
   },
   fields: [
@@ -65,7 +65,7 @@ export const Testimonials: CollectionConfig = {
             { label: 'Multi-Family', value: 'multi-family' },
           ],
           admin: {
-            placeholder: 'Type of property they own',
+            description: 'Type of property they own',
           },
         },
         {

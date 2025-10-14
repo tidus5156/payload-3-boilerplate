@@ -16,7 +16,7 @@ export const TeamMembers: CollectionConfig = {
       return !!user
     },
     delete: ({ req: { user } }) => {
-      return user?.role === 'admin'
+      return !!user
     },
   },
   fields: [

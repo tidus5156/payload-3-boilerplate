@@ -1,10 +1,9 @@
 import React from 'react'
-import type { HeroBlock as HeroBlockType } from '@/payload-types'
 import { Button } from '@/components/ui'
 import Link from 'next/link'
 import { Media } from '@/components/Media'
 
-export const HeroBlock: React.FC<HeroBlockType> = ({
+export const HeroBlock: React.FC<any> = ({
   headline,
   subheadline,
   backgroundImage,

@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ServicesGridBlock as ServicesGridBlockType } from '@/payload-types'
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Button } from '@/components/ui'
 import Link from 'next/link'
 import { Home, Key, Wrench, DollarSign, Users, FileText } from 'lucide-react'
@@ -13,7 +13,7 @@ const iconMap = {
   file: FileText,
 }
 
-export const ServicesGridBlock: React.FC<ServicesGridBlockType> = ({
+export const ServicesGridBlock: React.FC<any> = ({
   heading,
   subheading,
   services,

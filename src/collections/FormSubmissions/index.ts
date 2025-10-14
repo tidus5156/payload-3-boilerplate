@@ -6,7 +6,6 @@ export const FormSubmissions: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'email', 'formType', 'status', 'createdAt'],
     group: 'Property Management',
-    defaultSort: '-createdAt',
   },
   access: {
     read: ({ req: { user } }) => {
@@ -17,7 +16,7 @@ export const FormSubmissions: CollectionConfig = {
       return !!user
     },
     delete: ({ req: { user } }) => {
-      return user?.role === 'admin'
+      return !!user
     },
   },
   fields: [

@@ -16,7 +16,7 @@ export const Properties: CollectionConfig = {
       return !!user
     },
     delete: ({ req: { user } }) => {
-      return user?.role === 'admin'
+      return !!user
     },
   },
   fields: [
