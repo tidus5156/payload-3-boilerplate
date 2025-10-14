@@ -53,7 +53,7 @@ const productionSeed = async () => {
 
     // 2. Seed Team Members
     console.log('👥 Seeding Team Members...')
-    const teamMembers = []
+    const teamMembers: any[] = []
     for (const member of teamMembersData) {
       try {
         const created = await payload.create({
@@ -70,7 +70,7 @@ const productionSeed = async () => {
 
     // 3. Seed Testimonials
     console.log('⭐ Seeding Testimonials...')
-    const testimonials = []
+    const testimonials: any[] = []
     for (const testimonial of testimonialsData) {
       try {
         const created = await payload.create({
@@ -86,7 +86,7 @@ const productionSeed = async () => {
 
     // 4. Seed Neighborhoods
     console.log('🏘️  Seeding Neighborhoods...')
-    const neighborhoods = []
+    const neighborhoods: any[] = []
     for (const neighborhood of allNeighborhoodsData) {
       try {
         const created = await payload.create({
@@ -103,7 +103,7 @@ const productionSeed = async () => {
 
     // 5. Seed Categories
     console.log('📁 Seeding Categories...')
-    const categories = []
+    const categories: any[] = []
     for (const category of categoriesData) {
       try {
         const created = await payload.create({
