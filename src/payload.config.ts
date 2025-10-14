@@ -26,6 +26,7 @@ import { Settings } from './globals/Settings'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { seed } from './endpoints/seed'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -102,6 +103,18 @@ export default buildConfig({
       method: 'get',
       handler: async (req) => {
         return new Response('OK', { status: 200 });
+      }
+    },
+    {
+      path: '/seed',
+      method: 'get',
+      handler: async (req) => {
+        try {
+          await seed({ payload: req.payload, req });
+          return Response.json({ success: true, message: 'Database seeded successfully' });
+        } catch (error: any) {
+          return Response.json({ success: false, error: error.message }, { status: 500 });
+        }
       }
     }
   ],
