@@ -27,7 +27,7 @@ const seed = async () => {
     for (const member of teamMembersData) {
       const created = await payload.create({
         collection: 'team-members',
-        data: member,
+        data: member as any,
       })
       teamMembers.push(created)
       console.log(`   - Created: ${member.name}`)
@@ -40,7 +40,7 @@ const seed = async () => {
     for (const testimonial of testimonialsData) {
       const created = await payload.create({
         collection: 'testimonials',
-        data: testimonial,
+        data: testimonial as any,
       })
       testimonials.push(created)
     }
@@ -52,7 +52,7 @@ const seed = async () => {
     for (const neighborhood of allNeighborhoodsData) {
       const created = await payload.create({
         collection: 'neighborhoods',
-        data: neighborhood,
+        data: neighborhood as any,
       })
       neighborhoods.push(created)
       console.log(`   - Created: ${neighborhood.name}`)
@@ -65,7 +65,7 @@ const seed = async () => {
     for (const category of categoriesData) {
       const created = await payload.create({
         collection: 'categories',
-        data: category,
+        data: category as any,
       })
       categories.push(created)
     }
@@ -75,7 +75,7 @@ const seed = async () => {
     console.log('🏠 Seeding Homepage...')
     await payload.create({
       collection: 'pages',
-      data: homepageData,
+      data: homepageData as any,
     })
     console.log('✅ Homepage seeded\n')
 
@@ -133,7 +133,7 @@ const seed = async () => {
     for (const post of samplePosts) {
       await payload.create({
         collection: 'posts',
-        data: post,
+        data: post as any,
       })
       console.log(`   - Created: ${post.title}`)
     }

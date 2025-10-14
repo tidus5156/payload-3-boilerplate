@@ -58,7 +58,7 @@ const productionSeed = async () => {
       try {
         const created = await payload.create({
           collection: 'team-members',
-          data: member,
+          data: member as any,
         })
         teamMembers.push(created)
         console.log(`   - Created: ${member.name}`)
@@ -75,7 +75,7 @@ const productionSeed = async () => {
       try {
         const created = await payload.create({
           collection: 'testimonials',
-          data: testimonial,
+          data: testimonial as any,
         })
         testimonials.push(created)
       } catch (error) {
@@ -91,7 +91,7 @@ const productionSeed = async () => {
       try {
         const created = await payload.create({
           collection: 'neighborhoods',
-          data: neighborhood,
+          data: neighborhood as any,
         })
         neighborhoods.push(created)
         console.log(`   - Created: ${neighborhood.name}`)
@@ -108,7 +108,7 @@ const productionSeed = async () => {
       try {
         const created = await payload.create({
           collection: 'categories',
-          data: category,
+          data: category as any,
         })
         categories.push(created)
       } catch (error) {
@@ -122,7 +122,7 @@ const productionSeed = async () => {
     try {
       await payload.create({
         collection: 'pages',
-        data: homepageData,
+        data: homepageData as any,
       })
       console.log('✅ Homepage seeded\n')
     } catch (error) {
