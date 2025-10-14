@@ -1,0 +1,24 @@
+export const settingsData = {
+  siteName: 'Allay Property Management',
+  tagline: 'Stress Less. Earn More.',
+  phone: '(404) 555-0100',
+  email: 'info@allaypm.com',
+  officeAddress: '123 Peachtree Street NE, Suite 500\nAtlanta, GA 30303',
+  officeHours: 'Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 2:00 PM\nSunday: Closed',
+  socialMedia: {
+    facebook: 'https://facebook.com/allaypm',
+    instagram: 'https://instagram.com/allaypm',
+    linkedin: 'https://linkedin.com/company/allay-property-management',
+    twitter: 'https://twitter.com/allaypm',
+    youtube: 'https://youtube.com/@allaypropertymanagement',
+  },
+  googleAnalyticsId: '',
+  facebookPixelId: '',
+  gtmId: '',
+  remaxBrokerage: {
+    brokerageName: 'RE/MAX Metro Atlanta',
+    brokerName: 'David Patterson',
+    licenseNumber: 'GA License #123456',
+    showRemaxLogo: true,
+  },
+}

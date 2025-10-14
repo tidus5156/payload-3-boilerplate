@@ -19,12 +19,16 @@ const buttonVariants = cva(
         sm: 'h-9 rounded px-3',
       },
       variant: {
+        // Allay Brand Variants
+        primary: 'bg-warmGold text-deepNavy hover:bg-warmGoldHover focus-visible:ring-warmGold shadow-md font-semibold',
+        secondary: 'bg-skyBlue text-white hover:bg-skyBlue/90 focus-visible:ring-skyBlue shadow-md font-semibold',
+        outline: 'border-2 border-skyBlue text-skyBlue bg-transparent hover:bg-skyBlue hover:text-white focus-visible:ring-skyBlue font-semibold',
+
+        // Default Shadcn Variants (for admin compatibility)
         default: 'bg-primary text-primary-foreground hover:bg-primary/90',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         ghost: 'hover:bg-card hover:text-accent-foreground',
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
-        outline: 'border border-border bg-background hover:bg-card hover:text-accent-foreground',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
       },
     },
   },

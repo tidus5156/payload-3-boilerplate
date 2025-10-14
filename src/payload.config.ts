@@ -6,14 +6,23 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 
+// Collections
 import { Categories } from './collections/Categories'
 import { Comments } from './collections/Comments'
+import { FormSubmissions } from './collections/FormSubmissions'
 import { Media } from './collections/Media'
+import { Neighborhoods } from './collections/Neighborhoods'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
+import { Properties } from './collections/Properties'
+import { TeamMembers } from './collections/TeamMembers'
+import { Testimonials } from './collections/Testimonials'
 import { Users } from './collections/Users'
+
+// Globals
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
+import { Settings } from './globals/Settings'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -65,9 +74,24 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Comments],
+  collections: [
+    // Core Collections
+    Pages,
+    Posts,
+    Media,
+    Categories,
+    Users,
+    Comments,
+    // Property Management Collections
+    Properties,
+    Neighborhoods,
+    FormSubmissions,
+    // Content Collections
+    Testimonials,
+    TeamMembers,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [Settings, Header, Footer],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder

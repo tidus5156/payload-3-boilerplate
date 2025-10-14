@@ -53,6 +53,17 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        // Allay Property Management Brand Colors
+        deepNavy: '#1B3A6D',
+        skyBlue: '#5A9FD4',
+        warmGold: '#C9A961',
+        warmGoldHover: '#B8985F',
+        sageGreen: '#7A9B76',
+        charcoal: '#2D3436',
+        warmGray: '#6C757D',
+        lightGray: '#F5F7FA',
+
+        // Shadcn/UI Default Colors (preserved for compatibility)
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
@@ -91,6 +102,11 @@ export default {
         warning: 'hsl(var(--warning))',
       },
       fontFamily: {
+        // Allay Property Management Typography (Next.js font variables)
+        heading: ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
+        body: ['var(--font-open-sans)', 'Open Sans', 'sans-serif'],
+
+        // Default Geist fonts (preserved for admin/UI)
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
       },
