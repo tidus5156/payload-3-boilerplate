@@ -9,7 +9,7 @@ import React from 'react'
 import type { Props as MediaProps } from '../types'
 
 import { cssVariables } from '@/cssVariables'
-import { getClientSideURL } from '@/utilities/getURL'
+import { getServerSideURL } from '@/utilities/getURL'
 
 const { breakpoints } = cssVariables
 
@@ -47,10 +47,11 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     height = fullHeight!
     alt = altFromResource || ''
 
-    src = `${getClientSideURL()}${url}`
+    src = `${getServerSideURL()}${url}`
   }
 
-  const loading = loadingFromProps || 'lazy'
+  // Only set loading='lazy' if priority is not set (priority implies eager loading)
+  const loading = priority ? undefined : (loadingFromProps || 'lazy')
 
   // NOTE: this is used by the browser to determine which image to download at different screen sizes
   const sizes = sizeFromProps
@@ -70,7 +71,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         blurDataURL={placeholderBlur}
         priority={priority}
         quality={100}
-        loading={loading}
+        {...(loading && { loading })}
         sizes={sizes}
         src={src}
         width={!fill ? width : undefined}

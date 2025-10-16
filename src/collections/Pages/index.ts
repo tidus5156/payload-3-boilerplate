@@ -12,6 +12,9 @@ import { ServicesGrid } from '../../blocks/ServicesGrid/config'
 import { TestimonialsCarousel } from '../../blocks/TestimonialsCarousel/config'
 import { PricingComparison } from '../../blocks/PricingComparison/config'
 import { HeroCTA } from '../../blocks/HeroCTA/config'
+import { Statistics } from '../../blocks/Statistics/config'
+import { FAQAccordion } from '../../blocks/FAQAccordion/config'
+import { ProcessTimeline } from '../../blocks/ProcessTimeline/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -93,6 +96,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 TestimonialsCarousel,
                 PricingComparison,
                 HeroCTA,
+                Statistics,
+                FAQAccordion,
+                ProcessTimeline,
               ],
               required: true,
             },

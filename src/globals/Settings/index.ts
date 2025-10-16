@@ -133,6 +133,81 @@ export const Settings: GlobalConfig = {
           ],
         },
         {
+          label: 'Sticky CTA Bar',
+          fields: [
+            {
+              name: 'stickyCTABar',
+              type: 'group',
+              fields: [
+                {
+                  name: 'enabled',
+                  type: 'checkbox',
+                  label: 'Enable Sticky CTA Bar',
+                  defaultValue: true,
+                  admin: {
+                    description: 'Show the sticky contact bar at the bottom of pages',
+                  },
+                },
+                {
+                  name: 'heading',
+                  type: 'text',
+                  label: 'Heading',
+                  defaultValue: 'Ready to get started?',
+                  admin: {
+                    condition: (_, siblingData) => siblingData?.enabled,
+                  },
+                },
+                {
+                  name: 'subheading',
+                  type: 'text',
+                  label: 'Subheading',
+                  defaultValue: 'Get your free consultation today',
+                  admin: {
+                    condition: (_, siblingData) => siblingData?.enabled,
+                  },
+                },
+                {
+                  name: 'primaryButtonText',
+                  type: 'text',
+                  label: 'Primary Button Text',
+                  defaultValue: 'Call Now',
+                  admin: {
+                    condition: (_, siblingData) => siblingData?.enabled,
+                  },
+                },
+                {
+                  name: 'primaryButtonUrl',
+                  type: 'text',
+                  label: 'Primary Button URL',
+                  defaultValue: 'tel:+14045550100',
+                  admin: {
+                    condition: (_, siblingData) => siblingData?.enabled,
+                    placeholder: 'tel:+14045550100',
+                  },
+                },
+                {
+                  name: 'secondaryButtonText',
+                  type: 'text',
+                  label: 'Secondary Button Text',
+                  defaultValue: 'Email Us',
+                  admin: {
+                    condition: (_, siblingData) => siblingData?.enabled,
+                  },
+                },
+                {
+                  name: 'secondaryButtonUrl',
+                  type: 'text',
+                  label: 'Secondary Button URL',
+                  defaultValue: '/contact',
+                  admin: {
+                    condition: (_, siblingData) => siblingData?.enabled,
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        {
           label: 'RE/MAX Branding',
           fields: [
             {

@@ -67,6 +67,35 @@ export const hero: Field = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'trustIndicators',
+      type: 'array',
+      admin: {
+        condition: (_, { type } = {}) => ['mediumImpact', 'highImpact'].includes(type),
+      },
+      fields: [
+        {
+          name: 'icon',
+          type: 'select',
+          options: [
+            { label: 'Star', value: 'star' },
+            { label: 'Home', value: 'home' },
+            { label: 'Shield', value: 'shield' },
+            { label: 'Check', value: 'check' },
+            { label: 'Users', value: 'users' },
+            { label: 'Trending', value: 'trending' },
+          ],
+          required: true,
+        },
+        {
+          name: 'text',
+          type: 'text',
+          required: true,
+        },
+      ],
+      label: 'Trust Indicators',
+      maxRows: 4,
+    },
   ],
   label: false,
 }

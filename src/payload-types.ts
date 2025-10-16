@@ -22,6 +22,7 @@ export interface Config {
     'contact-submissions': ContactSubmission;
     testimonials: Testimonial;
     'team-members': TeamMember;
+    faqs: Faq;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -43,6 +44,7 @@ export interface Config {
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
+    faqs: FaqsSelect<false> | FaqsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -132,6 +134,13 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
+    trustIndicators?:
+      | {
+          icon: 'star' | 'home' | 'shield' | 'check' | 'users' | 'trending';
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
   };
   layout: (
     | CallToActionBlock
@@ -144,6 +153,9 @@ export interface Page {
     | TestimonialsCarouselBlock
     | PricingComparisonBlock
     | HeroCTABlock
+    | StatisticsBlock
+    | FAQAccordionBlock
+    | ProcessTimelineBlock
   )[];
   meta?: {
     title?: string | null;
@@ -774,6 +786,98 @@ export interface HeroCTABlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatisticsBlock".
+ */
+export interface StatisticsBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  stats: {
+    number: string;
+    suffix?: string | null;
+    prefix?: string | null;
+    label: string;
+    sublabel?: string | null;
+    icon?: ('home' | 'users' | 'star' | 'award' | 'trending' | 'check' | 'heart' | 'shield') | null;
+    animateCounter?: boolean | null;
+    id?: string | null;
+  }[];
+  layout?: ('grid-2' | 'grid-3' | 'grid-4') | null;
+  backgroundColor?: ('transparent' | 'lightGray' | 'deepNavy' | 'skyBlueLight') | null;
+  spacing?: ('compact' | 'normal' | 'spacious') | null;
+  enableAnimations?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'statistics';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQAccordionBlock".
+ */
+export interface FAQAccordionBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  faqs?: (number | Faq)[] | null;
+  filterByCategory?: ('general' | 'pricing' | 'services' | 'leasing' | 'maintenance' | 'legal')[] | null;
+  showFeaturedOnly?: boolean | null;
+  limit?: number | null;
+  defaultExpanded?: boolean | null;
+  allowMultiple?: boolean | null;
+  backgroundColor?: ('transparent' | 'lightGray' | 'white') | null;
+  spacing?: ('compact' | 'normal' | 'spacious') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faqAccordion';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs".
+ */
+export interface Faq {
+  id: number;
+  question: string;
+  answer: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  category: 'general' | 'pricing' | 'services' | 'leasing' | 'maintenance' | 'legal';
+  order?: number | null;
+  featured?: boolean | null;
+  published?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessTimelineBlock".
+ */
+export interface ProcessTimelineBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  steps: {
+    title: string;
+    description: string;
+    icon?: ('phone' | 'calendar' | 'clipboard' | 'check' | 'users' | 'home') | null;
+    id?: string | null;
+  }[];
+  layout?: ('vertical' | 'horizontal') | null;
+  spacing?: ('compact' | 'normal' | 'spacious') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'processTimeline';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "comments".
  */
 export interface Comment {
@@ -1109,6 +1213,10 @@ export interface PayloadLockedDocument {
         value: number | TeamMember;
       } | null)
     | ({
+        relationTo: 'faqs';
+        value: number | Faq;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1193,6 +1301,13 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        trustIndicators?:
+          | T
+          | {
+              icon?: T;
+              text?: T;
+              id?: T;
+            };
       };
   layout?:
     | T
@@ -1368,6 +1483,64 @@ export interface PagesSelect<T extends boolean = true> {
                     url?: T;
                   };
               backgroundColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        statistics?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              stats?:
+                | T
+                | {
+                    number?: T;
+                    suffix?: T;
+                    prefix?: T;
+                    label?: T;
+                    sublabel?: T;
+                    icon?: T;
+                    animateCounter?: T;
+                    id?: T;
+                  };
+              layout?: T;
+              backgroundColor?: T;
+              spacing?: T;
+              enableAnimations?: T;
+              id?: T;
+              blockName?: T;
+            };
+        faqAccordion?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              faqs?: T;
+              filterByCategory?: T;
+              showFeaturedOnly?: T;
+              limit?: T;
+              defaultExpanded?: T;
+              allowMultiple?: T;
+              backgroundColor?: T;
+              spacing?: T;
+              id?: T;
+              blockName?: T;
+            };
+        processTimeline?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              steps?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    icon?: T;
+                    id?: T;
+                  };
+              layout?: T;
+              spacing?: T;
               id?: T;
               blockName?: T;
             };
@@ -1740,6 +1913,20 @@ export interface TeamMembersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faqs_select".
+ */
+export interface FaqsSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  category?: T;
+  order?: T;
+  featured?: T;
+  published?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -1982,6 +2169,15 @@ export interface Setting {
   googleAnalyticsId?: string | null;
   facebookPixelId?: string | null;
   gtmId?: string | null;
+  stickyCTABar?: {
+    enabled?: boolean | null;
+    heading?: string | null;
+    subheading?: string | null;
+    primaryButtonText?: string | null;
+    primaryButtonUrl?: string | null;
+    secondaryButtonText?: string | null;
+    secondaryButtonUrl?: string | null;
+  };
   remaxBrokerage?: {
     brokerageName?: string | null;
     brokerName?: string | null;
@@ -2009,6 +2205,21 @@ export interface Header {
           url?: string | null;
           label: string;
         };
+        children?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?: {
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null;
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -2062,6 +2273,17 @@ export interface SettingsSelect<T extends boolean = true> {
   googleAnalyticsId?: T;
   facebookPixelId?: T;
   gtmId?: T;
+  stickyCTABar?:
+    | T
+    | {
+        enabled?: T;
+        heading?: T;
+        subheading?: T;
+        primaryButtonText?: T;
+        primaryButtonUrl?: T;
+        secondaryButtonText?: T;
+        secondaryButtonUrl?: T;
+      };
   remaxBrokerage?:
     | T
     | {
@@ -2090,6 +2312,20 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+            };
+        children?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };

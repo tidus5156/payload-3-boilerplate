@@ -13,12 +13,16 @@ import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
+import { SkipToContent } from '@/components/SkipToContent'
+import { StickyCTABar } from '@/components/StickyCTABar'
+import { getCachedGlobal } from '@/utilities/getGlobals'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
+  const settings = await getCachedGlobal('settings', 1)()
 
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
@@ -29,6 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <Providers>
+          <SkipToContent />
           <AdminBar
             adminBarProps={{
               preview: isEnabled,
@@ -37,8 +42,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <LivePreviewListener />
 
           <Header />
-          {children}
+          <main id="main-content">
+            {children}
+          </main>
           <Footer />
+          <StickyCTABar settings={settings as any} />
         </Providers>
       </body>
     </html>

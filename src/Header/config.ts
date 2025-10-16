@@ -16,6 +16,20 @@ export const Header: GlobalConfig = {
         link({
           appearances: false,
         }),
+        {
+          name: 'children',
+          type: 'array',
+          label: 'Submenu Items',
+          maxRows: 8,
+          admin: {
+            description: 'Add submenu items to create a dropdown menu',
+          },
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+        },
       ],
       maxRows: 6,
     },

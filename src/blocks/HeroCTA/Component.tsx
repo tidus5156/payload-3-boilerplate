@@ -4,9 +4,9 @@ import { CMSLink } from '@/components/Link'
 import { cn } from '@/utilities/cn'
 
 const backgroundColors = {
-  deepNavy: 'bg-slate-900 text-white',
-  skyBlue: 'bg-blue-500 text-white',
-  warmGold: 'bg-amber-500 text-white',
+  deepNavy: 'bg-gradient-to-br from-deepNavy via-deepNavy to-skyBlue/20 text-white',
+  skyBlue: 'bg-gradient-to-br from-skyBlue to-skyBlue/80 text-white',
+  warmGold: 'bg-gradient-to-br from-warmGold to-warmGoldLight text-deepNavy',
   lightGray: 'bg-gray-100 text-gray-900',
 }
 
@@ -19,10 +19,21 @@ export const HeroCTABlock: React.FC<HeroCTABlockType> = ({
 }) => {
   return (
     <div className={cn(
-      'py-20 px-4',
+      'py-20 px-4 relative overflow-hidden',
       backgroundColors[backgroundColor as keyof typeof backgroundColors] || backgroundColors.deepNavy
     )}>
-      <div className="container">
+      {/* Animated floating orbs for deepNavy background */}
+      {backgroundColor === 'deepNavy' && (
+        <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
+          <div className="absolute top-10 right-20 w-96 h-96 bg-warmGold/40 rounded-full blur-3xl animate-float" />
+          <div
+            className="absolute bottom-20 left-20 w-80 h-80 bg-skyBlue/50 rounded-full blur-3xl animate-float"
+            style={{ animationDelay: '1.5s', animationDuration: '4s' }}
+          />
+        </div>
+      )}
+
+      <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {headline && (
             <h2 className="text-4xl md:text-5xl font-bold mb-6">

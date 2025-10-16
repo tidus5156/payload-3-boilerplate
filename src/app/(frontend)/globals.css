@@ -101,3 +101,111 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+/* Focus visible styles for accessibility (WCAG 2.4.7) */
+*:focus-visible {
+  outline: 3px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Remove default outline but keep focus-visible */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Reduced motion support (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 0 0% 20%;
+  }
+
+  [data-theme='dark'] {
+    --border: 0 0% 80%;
+  }
+}
+
+/* Screen reader only utility (already have sr-only but ensuring consistency) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Hero gradient text effects */
+.hero-content h1 {
+  @apply text-5xl md:text-6xl lg:text-7xl font-bold leading-tight;
+  background: linear-gradient(135deg, #ffffff 0%, #E8D7B3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 20px rgba(201, 169, 97, 0.3);
+}
+
+/* Section headings with accent underline */
+@layer components {
+  .section-heading {
+    @apply relative inline-block;
+  }
+
+  .section-heading::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-24 h-1 bg-gradient-gold rounded-full;
+  }
+}
+
+/* Enhanced button animations */
+@layer components {
+  .btn-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.7s;
+  }
+
+  .btn-shimmer:hover::before {
+    left: 100%;
+  }
+}

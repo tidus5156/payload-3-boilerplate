@@ -4,7 +4,7 @@ export const homepageData = {
   metaTitle: 'Allay Property Management | Stress Less. Earn More. | Metro Atlanta',
   metaDescription: 'Professional property management for Metro Atlanta rental properties. Guaranteed rent, quality tenants, 24/7 support. Get your free rental analysis today.',
   hero: {
-    type: 'lowImpact',
+    type: 'mediumImpact',
     richText: {
       root: {
         type: 'root',
@@ -69,6 +69,20 @@ export const homepageData = {
           label: 'View Our Services',
           appearance: 'outline',
         },
+      },
+    ],
+    trustIndicators: [
+      {
+        icon: 'star',
+        text: '4.9/5 Rating',
+      },
+      {
+        icon: 'home',
+        text: '500+ Properties',
+      },
+      {
+        icon: 'shield',
+        text: 'RE/MAX Backed',
       },
     ],
   },
@@ -163,6 +177,74 @@ export const homepageData = {
         },
       ],
     },
+    // Statistics Block
+    {
+      blockType: 'statistics',
+      heading: 'Proven Results for Property Owners',
+      subheading: 'Our data-driven approach delivers measurable results that maximize your return on investment.',
+      stats: [
+        {
+          number: '98',
+          suffix: '%',
+          label: 'Rent Collection Rate',
+          icon: 'trending',
+          animateCounter: true,
+        },
+        {
+          number: '15',
+          label: 'Average Days to Lease',
+          icon: 'check',
+          animateCounter: true,
+        },
+        {
+          number: '500',
+          suffix: '+',
+          label: 'Properties Managed',
+          icon: 'home',
+          animateCounter: true,
+        },
+        {
+          number: '4.9',
+          suffix: '/5',
+          label: 'Client Satisfaction',
+          icon: 'star',
+          animateCounter: true,
+        },
+      ],
+      layout: 'grid-4',
+      backgroundColor: 'skyBlueLight',
+      spacing: 'normal',
+      enableAnimations: true,
+    },
+    // Process Timeline
+    {
+      blockType: 'processTimeline',
+      heading: 'Getting Started is Simple',
+      subheading: 'From initial consultation to your first rent check, we make the onboarding process seamless.',
+      steps: [
+        {
+          title: 'Free Rental Analysis',
+          description: 'Schedule a consultation to discuss your property and investment goals. We\'ll provide a comprehensive rental market analysis at no cost.',
+          icon: 'phone',
+        },
+        {
+          title: 'Property Inspection',
+          description: 'Our team conducts a thorough inspection to assess condition, identify any needed repairs, and determine optimal rental pricing.',
+          icon: 'clipboard',
+        },
+        {
+          title: 'Marketing & Leasing',
+          description: 'We create professional listings, coordinate showings, screen applicants, and secure qualified tenants quickly.',
+          icon: 'calendar',
+        },
+        {
+          title: 'Ongoing Management',
+          description: 'Sit back and relax while we handle rent collection, maintenance, inspections, and everything else.',
+          icon: 'check',
+        },
+      ],
+      layout: 'vertical',
+    },
     // Testimonials Carousel
     {
       blockType: 'testimonialsCarousel',
@@ -214,6 +296,132 @@ export const homepageData = {
           ctaUrl: '/contact',
         },
       ],
+    },
+    // FAQ Accordion
+    {
+      blockType: 'faqAccordion',
+      heading: 'Frequently Asked Questions',
+      subheading: 'Get answers to common questions about our property management services.',
+      faqs: [
+        {
+          question: 'What is included in your 8% management fee?',
+          answer: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'Our 8% fee covers everything: tenant placement, rent collection, maintenance coordination, monthly financial reports, lease enforcement, property inspections, 24/7 emergency support, and our 12-month rent guarantee. There are no hidden fees or additional charges.',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        {
+          question: 'How quickly can you find a tenant for my property?',
+          answer: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'Our average time to lease is just 15 days. We use professional photography, strategic pricing, and multi-platform marketing to attract qualified tenants quickly. Most properties receive showing requests within 48 hours of listing.',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        {
+          question: 'What is your tenant screening process?',
+          answer: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'We conduct comprehensive background checks including credit reports, criminal history, eviction history, employment verification, income verification (minimum 3x rent), and rental history with previous landlords. Only applicants who meet our strict criteria are approved.',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        {
+          question: 'How does the 12-month rent guarantee work?',
+          answer: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'We guarantee you\'ll receive rent payments for the first 12 months. If a tenant defaults, we cover the payment while handling the eviction process. This exclusive program protects your cash flow and gives you peace of mind from day one.',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        {
+          question: 'Who handles maintenance requests?',
+          answer: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'We coordinate all maintenance through our network of licensed, insured contractors. Tenants submit requests through our portal, we assess urgency, get quotes, obtain your approval (for non-emergency repairs over $500), and oversee completion. Emergency repairs are handled 24/7.',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+        {
+          question: 'Can I use my own contractors for repairs?',
+          answer: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'Absolutely! While we have preferred contractors who offer competitive pricing and quick response times, you\'re welcome to use your own vendors. We\'ll coordinate with them just as we would with our network.',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+      ],
+      defaultExpanded: true,
+      allowMultiple: false,
+      backgroundColor: 'white',
+      spacing: 'normal',
     },
     // Final CTA
     {

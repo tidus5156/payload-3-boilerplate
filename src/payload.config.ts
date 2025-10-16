@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url'
 // Collections
 import { Categories } from './collections/Categories'
 import { Comments } from './collections/Comments'
+import { FAQs } from './collections/FAQs'
 import { FormSubmissions } from './collections/FormSubmissions'
 import { Media } from './collections/Media'
 import { Neighborhoods } from './collections/Neighborhoods'
@@ -91,6 +92,7 @@ export default buildConfig({
     // Content Collections
     Testimonials,
     TeamMembers,
+    FAQs,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Settings, Header, Footer],

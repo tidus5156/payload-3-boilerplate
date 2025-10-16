@@ -1,8 +1,15 @@
+import { loadEnv } from '../utilities/loadEnv'
+
+// Load environment variables FIRST, before importing config
+loadEnv()
+
 import { getPayload } from 'payload'
 import config from '@payload-config'
 
 const reset = async () => {
   try {
+    console.log('DEBUG - process.env.PAYLOAD_SECRET:', process.env.PAYLOAD_SECRET?.substring(0, 10) + '...')
+
     const payload = await getPayload({ config })
 
     console.log('🗑️  Starting database reset...\n')

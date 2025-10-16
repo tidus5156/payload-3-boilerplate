@@ -1,3 +1,8 @@
+import { loadEnv } from '../utilities/loadEnv'
+
+// Load environment variables FIRST, before importing config
+loadEnv()
+
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { settingsData } from './settings'
@@ -119,14 +124,58 @@ const productionSeed = async () => {
 
     // 6. Seed Homepage
     console.log('🏠 Seeding Homepage...')
+    let homepageDoc: any
     try {
-      await payload.create({
+      homepageDoc = await payload.create({
         collection: 'pages',
         data: homepageData as any,
       })
       console.log('✅ Homepage seeded\n')
     } catch (error) {
       console.error('❌ Error seeding homepage:', error)
+    }
+
+    // 7. Seed Header Navigation
+    console.log('🧭 Seeding Header Navigation...')
+    try {
+      await payload.updateGlobal({
+        slug: 'header',
+        data: {
+          navItems: [
+            {
+              link: {
+                type: 'custom',
+                label: 'Home',
+                url: '/',
+              },
+            },
+            {
+              link: {
+                type: 'custom',
+                label: 'Services',
+                url: '/services',
+              },
+            },
+            {
+              link: {
+                type: 'custom',
+                label: 'About',
+                url: '/about',
+              },
+            },
+            {
+              link: {
+                type: 'custom',
+                label: 'Contact',
+                url: '/contact',
+              },
+            },
+          ],
+        },
+      })
+      console.log('✅ Header navigation seeded\n')
+    } catch (error) {
+      console.error('❌ Error seeding header navigation:', error)
     }
 
     console.log('🎉 Production database seed completed successfully!\n')
@@ -137,6 +186,7 @@ const productionSeed = async () => {
     console.log(`   - Neighborhoods: ${neighborhoods.length}`)
     console.log(`   - Categories: ${categories.length}`)
     console.log(`   - Pages: 1 (Homepage)`)
+    console.log(`   - Header Navigation: ✅`)
     console.log('\n✨ Your Allay Property Management site is ready for production!')
 
     process.exit(0)

@@ -1,10 +1,12 @@
 import type { Payload, PayloadRequest } from 'payload'
 import { settingsData } from '@/seed/settings'
+import { headerData } from '@/seed/header'
 import { teamMembersData } from '@/seed/team'
 import { testimonialsData } from '@/seed/testimonials'
 import { allNeighborhoodsData } from '@/seed/neighborhoods'
 import { categoriesData } from '@/seed/categories'
 import { homepageData } from '@/seed/pages/homepage'
+import { faqsData } from '@/seed/faqs'
 
 export const seedAllay = async ({
   payload,
@@ -35,7 +37,15 @@ export const seedAllay = async ({
     })
     payload.logger.info('✅ Settings seeded')
 
-    // 2. Seed Team Members
+    // 2. Seed Header Navigation
+    payload.logger.info('🧭 Seeding Header Navigation...')
+    await payload.updateGlobal({
+      slug: 'header',
+      data: headerData as any,
+    })
+    payload.logger.info('✅ Header navigation seeded')
+
+    // 3. Seed Team Members
     payload.logger.info('👥 Seeding Team Members...')
     const teamMembers: any[] = []
     for (const member of teamMembersData) {
@@ -101,12 +111,91 @@ export const seedAllay = async ({
     }
     payload.logger.info(`✅ ${categories.length} categories seeded`)
 
-    // 6. Seed Homepage
+    // 6. Seed FAQs
+    payload.logger.info('❓ Seeding FAQs...')
+    const faqs: any[] = []
+    for (const faq of faqsData) {
+      try {
+        const created = await payload.create({
+          collection: 'faqs',
+          data: faq as any,
+        })
+        faqs.push(created)
+        payload.logger.info(`   - Created: ${faq.question}`)
+      } catch (error) {
+        payload.logger.error(`   ❌ Error creating FAQ:`, error)
+      }
+    }
+    payload.logger.info(`✅ ${faqs.length} FAQs seeded`)
+
+    // 7. Seed Hero Background Image
+    payload.logger.info('🖼️  Uploading hero background image...')
+    let heroImageId: number | string | null = null
+    try {
+      // Use a high-quality property/cityscape image from Unsplash
+      const heroImageUrl = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&q=80'
+
+      const heroImageResponse = await fetch(heroImageUrl)
+      const heroImageBuffer = await heroImageResponse.arrayBuffer()
+
+      const heroImage = await payload.create({
+        collection: 'media',
+        data: {
+          alt: 'Modern Atlanta property with professional property management',
+        },
+        file: {
+          data: Buffer.from(heroImageBuffer),
+          mimetype: 'image/jpeg',
+          name: 'hero-background.jpg',
+          size: heroImageBuffer.byteLength,
+        },
+      })
+
+      heroImageId = heroImage.id
+      payload.logger.info(`✅ Hero image uploaded with ID: ${heroImageId}`)
+    } catch (error) {
+      payload.logger.error('❌ Error uploading hero image:', error)
+      // Continue without hero image if upload fails
+    }
+
+    // 8. Seed Homepage
     payload.logger.info('🏠 Seeding Allay Homepage...')
     try {
+      const pageData = { ...homepageData }
+
+      // Add hero image if successfully uploaded
+      if (heroImageId) {
+        pageData.hero = {
+          ...homepageData.hero,
+          media: heroImageId,
+        } as any
+      }
+
+      // Update FAQAccordion block to use FAQ IDs from collection instead of inline data
+      if (faqs.length > 0) {
+        const faqAccordionIndex = pageData.layout.findIndex(
+          (block: any) => block.blockType === 'faqAccordion'
+        )
+        if (faqAccordionIndex !== -1) {
+          // Replace inline FAQ data with FAQ collection relationship IDs
+          const existingBlock = pageData.layout[faqAccordionIndex] as any
+          pageData.layout[faqAccordionIndex] = {
+            blockType: 'faqAccordion',
+            heading: existingBlock.heading,
+            subheading: existingBlock.subheading,
+            faqs: faqs.map((faq: any) => faq.id), // Use FAQ collection relationship IDs
+            defaultExpanded: existingBlock.defaultExpanded ?? true,
+            allowMultiple: existingBlock.allowMultiple ?? false,
+            backgroundColor: existingBlock.backgroundColor || 'transparent',
+            spacing: existingBlock.spacing || 'normal',
+          } as any
+          payload.logger.info(`   - Updated FAQAccordion block to reference ${faqs.length} FAQ entries`)
+        }
+      }
+
       const createdPage = await payload.create({
         collection: 'pages',
-        data: homepageData as any,
+        data: pageData as any,
       })
       payload.logger.info('✅ Allay Homepage seeded with ID:', createdPage.id)
     } catch (error: any) {
@@ -120,10 +209,12 @@ export const seedAllay = async ({
     payload.logger.info('🎉 Allay Property Management seed completed!')
     payload.logger.info('📊 Summary:')
     payload.logger.info(`   - Settings: ✅`)
+    payload.logger.info(`   - Header Navigation: ✅`)
     payload.logger.info(`   - Team Members: ${teamMembers.length}`)
     payload.logger.info(`   - Testimonials: ${testimonials.length}`)
     payload.logger.info(`   - Neighborhoods: ${neighborhoods.length}`)
     payload.logger.info(`   - Categories: ${categories.length}`)
+    payload.logger.info(`   - FAQs: ${faqs.length}`)
     payload.logger.info(`   - Pages: 1 (Homepage)`)
     payload.logger.info('✨ Your Allay Property Management site is ready for production!')
   } catch (error) {

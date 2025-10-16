@@ -13,6 +13,9 @@ import { ServicesGridBlock } from '@/blocks/ServicesGrid/Component'
 import { TestimonialsCarouselBlock } from '@/blocks/TestimonialsCarousel/Component'
 import { PricingComparisonBlock } from '@/blocks/PricingComparison/Component'
 import { HeroCTABlock } from '@/blocks/HeroCTA/Component'
+import { StatisticsBlock } from '@/blocks/Statistics/Component'
+import { FAQAccordionBlock } from '@/blocks/FAQAccordion/Component'
+import { ProcessTimelineBlock } from '@/blocks/ProcessTimeline/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -25,6 +28,9 @@ const blockComponents = {
   testimonialsCarousel: TestimonialsCarouselBlock,
   pricingComparison: PricingComparisonBlock,
   heroCTA: HeroCTABlock,
+  statistics: StatisticsBlock,
+  faqAccordion: FAQAccordionBlock,
+  processTimeline: ProcessTimelineBlock,
 }
 
 export const RenderBlocks: React.FC<{

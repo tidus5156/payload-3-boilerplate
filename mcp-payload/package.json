@@ -1,0 +1,28 @@
+{
+  "name": "@payload-mcp/server",
+  "version": "1.0.0",
+  "description": "MCP server for Payload CMS integration with Claude Code",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc && node build/index.js",
+    "dev": "tsc && node build/index.js",
+    "clean": "rm -rf build"
+  },
+  "keywords": [
+    "mcp",
+    "payload",
+    "cms",
+    "claude"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "payload": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3"
+  }
+}

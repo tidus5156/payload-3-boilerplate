@@ -1,10 +1,15 @@
+import { loadEnv } from '../utilities/loadEnv'
+
+// Load environment variables FIRST, before importing config
+loadEnv()
+
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { settingsData } from './settings'
 import { teamMembersData } from './team'
 import { testimonialsData } from './testimonials'
 import { allNeighborhoodsData } from './neighborhoods'
-import { categoriesData } from './categories'
+import { categoriesData} from './categories'
 import { homepageData } from './pages/homepage'
 
 const seed = async () => {

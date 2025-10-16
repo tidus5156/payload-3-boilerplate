@@ -15,6 +15,15 @@ export const settingsData = {
   googleAnalyticsId: '',
   facebookPixelId: '',
   gtmId: '',
+  stickyCTABar: {
+    enabled: true,
+    heading: 'Ready to get started?',
+    subheading: 'Get your free consultation today',
+    primaryButtonText: 'Call Now',
+    primaryButtonUrl: 'tel:+14045550100',
+    secondaryButtonText: 'Email Us',
+    secondaryButtonUrl: '/contact',
+  },
   remaxBrokerage: {
     brokerageName: 'RE/MAX Metro Atlanta',
     brokerName: 'David Patterson',
