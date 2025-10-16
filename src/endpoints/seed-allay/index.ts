@@ -193,11 +193,34 @@ export const seedAllay = async ({
         }
       }
 
-      const createdPage = await payload.create({
+      // Check if homepage already exists
+      const existingHomepage = await payload.find({
         collection: 'pages',
-        data: pageData as any,
+        where: {
+          slug: {
+            equals: 'home',
+          },
+        },
+        limit: 1,
       })
-      payload.logger.info('✅ Allay Homepage seeded with ID:', createdPage.id)
+
+      let homepage
+      if (existingHomepage.docs.length > 0) {
+        // Update existing homepage
+        homepage = await payload.update({
+          collection: 'pages',
+          id: existingHomepage.docs[0].id,
+          data: pageData as any,
+        })
+        payload.logger.info('✅ Allay Homepage updated with ID:', homepage.id)
+      } else {
+        // Create new homepage
+        homepage = await payload.create({
+          collection: 'pages',
+          data: pageData as any,
+        })
+        payload.logger.info('✅ Allay Homepage created with ID:', homepage.id)
+      }
     } catch (error: any) {
       payload.logger.error('❌ Error seeding homepage:')
       payload.logger.error('Error message:', error.message)
