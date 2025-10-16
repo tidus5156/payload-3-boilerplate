@@ -9,7 +9,7 @@ import React from 'react'
 import type { Props as MediaProps } from '../types'
 
 import { cssVariables } from '@/cssVariables'
-import { getServerSideURL } from '@/utilities/getURL'
+import { getClientSideURL } from '@/utilities/getURL'
 
 const { breakpoints } = cssVariables
 
@@ -47,7 +47,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
     height = fullHeight!
     alt = altFromResource || ''
 
-    src = `${getServerSideURL()}${url}`
+    src = `${getClientSideURL()}${url}`
   }
 
   // Only set loading='lazy' if priority is not set (priority implies eager loading)

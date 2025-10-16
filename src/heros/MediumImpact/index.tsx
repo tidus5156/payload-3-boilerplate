@@ -55,7 +55,7 @@ const renderIcon = (iconType: string) => {
 export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText, trustIndicators }) => {
   return (
     <div
-      className={`relative ${media ? 'bg-deepNavy mb-16 md:mb-20' : ''}`}
+      className={`relative ${media ? 'bg-deepNavy' : ''}`}
       style={media ? {
         clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4rem), 0 100%)',
       } : undefined}
