@@ -18,16 +18,21 @@ export const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
   delay = 0,
   duration = 600,
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [shouldAnimate, setShouldAnimate] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
+  const hasAnimated = useRef(false)
 
   useEffect(() => {
+    if (!ref.current || hasAnimated.current) return
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true
           setTimeout(() => {
-            setIsVisible(true)
+            setShouldAnimate(true)
           }, delay)
+          observer.disconnect()
         }
       },
       {
@@ -36,14 +41,10 @@ export const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
       }
     )
 
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
+    observer.observe(ref.current)
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current)
-      }
+      observer.disconnect()
     }
   }, [delay])
 
@@ -52,8 +53,7 @@ export const ScrollAnimation: React.FC<ScrollAnimationProps> = ({
       ref={ref}
       className={cn(
         'transition-all',
-        !isVisible && 'opacity-0',
-        isVisible && `animate-${animation}`,
+        shouldAnimate && `animate-${animation}`,
         className
       )}
       style={{
