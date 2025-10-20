@@ -2,7 +2,7 @@ import React from 'react'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import type { Faq } from '@/payload-types'
-import { serializeLexical } from '@/components/RichText/serialize'
+import RichText from '@/components/RichText'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -170,9 +170,12 @@ function FAQItem({ faq, index }: { faq: Faq; index: number }) {
         </svg>
       </summary>
       <div className="px-6 pb-5 pt-2">
-        <div className="prose prose-sm max-w-none text-[#6C757D]">
-          {serializeLexical({ nodes: faq.answer?.root?.children })}
-        </div>
+        <RichText
+          content={faq.answer as Record<string, any>}
+          enableGutter={false}
+          enableProse={false}
+          className="prose prose-sm max-w-none text-[#6C757D]"
+        />
       </div>
     </details>
   )
