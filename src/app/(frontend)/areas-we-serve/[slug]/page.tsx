@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation'
 import config from '@payload-config'
 
 interface NeighborhoodPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: NeighborhoodPageProps): Promise<Metadata> {
-  const { slug } = params
+  const { slug } = await params
   const payload = await getPayload({ config })
 
   const neighborhoods = await payload.find({
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: NeighborhoodPageProps): Promi
 }
 
 export default async function NeighborhoodPage({ params }: NeighborhoodPageProps) {
-  const { slug } = params
+  const { slug } = await params
   const payload = await getPayload({ config })
 
   const neighborhoods = await payload.find({
