@@ -172,25 +172,34 @@ export default async function Service({ params: paramsPromise }: Args) {
             },
           },
         ]}
-        richText={[
-          {
-            type: 'heading',
+        richText={{
+          root: {
+            type: 'root',
             children: [
               {
-                text: 'Ready to Get Started?',
+                type: 'heading',
+                children: [
+                  {
+                    text: 'Ready to Get Started?',
+                  },
+                ],
+                tag: 'h2',
               },
-            ],
-            tag: 'h2',
-          },
-          {
-            type: 'paragraph',
-            children: [
               {
-                text: 'Contact us today to learn more about this service and how we can help maximize your property investment.',
+                type: 'paragraph',
+                children: [
+                  {
+                    text: 'Contact us today to learn more about this service and how we can help maximize your property investment.',
+                  },
+                ],
               },
             ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
           },
-        ]}
+        }}
       />
     </article>
   )
