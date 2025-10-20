@@ -1,7 +1,7 @@
 import React from 'react'
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import type { FAQ } from '@/payload-types'
+import type { Faq } from '@/payload-types'
 import { serializeLexical } from '@/components/RichText/serialize'
 
 export const dynamic = 'force-static'
@@ -155,7 +155,7 @@ export default async function ResidentsFAQPage() {
   )
 }
 
-function FAQItem({ faq, index }: { faq: FAQ; index: number }) {
+function FAQItem({ faq, index }: { faq: Faq; index: number }) {
   return (
     <details className="group bg-white rounded-lg border border-gray-200 hover:border-[#5A9FD4] transition-colors overflow-hidden">
       <summary className="cursor-pointer list-none px-6 py-5 flex items-center justify-between">
