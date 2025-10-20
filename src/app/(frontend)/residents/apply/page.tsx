@@ -45,7 +45,7 @@ export default function ResidentsApplyPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-lg font-semibold text-[#1B3A6D] mb-3">
-                    What You'll Need:
+                    What You&apos;ll Need:
                   </h3>
                   <ul className="space-y-2 text-[#6C757D]">
                     <li className="flex items-start">
@@ -108,7 +108,7 @@ export default function ResidentsApplyPage() {
                   Application Form Coming Soon
                 </h3>
                 <p className="text-[#6C757D] mb-6 max-w-2xl mx-auto">
-                  We're setting up our online application system. In the meantime, please contact
+                  We&apos;re setting up our online application system. In the meantime, please contact
                   us directly to apply for a property.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

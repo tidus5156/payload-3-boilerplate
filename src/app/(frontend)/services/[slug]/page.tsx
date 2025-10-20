@@ -94,7 +94,7 @@ export default async function Service({ params: paramsPromise }: Args) {
           {service.features && service.features.length > 0 && (
             <div className="mb-12">
               <h2 className="text-3xl font-heading font-bold text-deepNavy mb-6">
-                What's Included
+                What&apos;s Included
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 {service.features.map((item, index) => (
