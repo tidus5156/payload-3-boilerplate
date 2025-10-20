@@ -1,9 +1,24 @@
 import type { Metadata } from 'next'
 
 import { cn } from 'src/utilities/cn'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
+import { Montserrat } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 import React from 'react'
+
+// Allay Property Management fonts
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
 
 import { AdminBar } from '@/components/AdminBar'
 import { Footer } from '@/Footer/Component'
@@ -25,13 +40,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const settings = await getCachedGlobal('settings', 1)()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html className={cn(montserrat.variable, openSans.variable)} lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
-      <body>
+      <body className={cn(openSans.className, 'font-body')}>
         <Providers>
           <SkipToContent />
           <AdminBar

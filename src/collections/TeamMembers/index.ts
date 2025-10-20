@@ -45,7 +45,7 @@ export const TeamMembers: CollectionConfig = {
       name: 'photo',
       type: 'upload',
       relationTo: 'media',
-      required: true,
+      required: false,
       admin: {
         description: 'Professional headshot (square format recommended)',
       },

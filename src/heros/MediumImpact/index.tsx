@@ -55,10 +55,12 @@ const renderIcon = (iconType: string) => {
 export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText, trustIndicators }) => {
   return (
     <div
-      className={`relative ${media ? 'bg-deepNavy' : ''}`}
+      className={`relative ${media ? 'bg-deepNavy' : 'bg-gradient-to-br from-deepNavy via-deepNavy to-skyBlue'}`}
       style={media ? {
         clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4rem), 0 100%)',
-      } : undefined}
+      } : {
+        clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4rem), 0 100%)',
+      }}
     >
       {/* Background Image with Overlay */}
       {media && typeof media === 'object' && (
@@ -95,7 +97,7 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richTex
           <div className="max-w-3xl hero-content">
             {richText && (
               <RichText
-                className={`mb-8 ${media ? 'text-white' : ''}`}
+                className="mb-8 text-white"
                 content={richText}
                 enableGutter={false}
               />
@@ -116,7 +118,7 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richTex
             )}
 
             {/* Trust Indicators */}
-            {media && Array.isArray(trustIndicators) && trustIndicators.length > 0 && (
+            {Array.isArray(trustIndicators) && trustIndicators.length > 0 && (
               <div className="mt-8 flex flex-wrap gap-6 md:gap-8">
                 {trustIndicators.map((indicator, index) => (
                   <div

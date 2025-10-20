@@ -1,0 +1,317 @@
+export const servicesData = [
+  {
+    name: 'Full-Service Property Management',
+    slug: 'full-service-property-management',
+    icon: 'building',
+    order: 0,
+    featured: true,
+    published: true,
+    shortDescription:
+      'Complete property management services from marketing to maintenance. We handle every detail so you can focus on growing your portfolio.',
+    fullDescription: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'Our comprehensive property management service is designed for busy property owners who want a truly hands-off experience. From the moment you partner with us, we take care of everything—marketing your property with professional photography, screening and placing qualified tenants, collecting rent, coordinating repairs, conducting inspections, and handling all tenant communications.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: "With our full-service management, you'll enjoy consistent rental income without the stress and time commitment of day-to-day property operations. We leverage RE/MAX resources, local market expertise, and proven systems to maximize your returns while preserving your property's value over the long term.",
+          },
+        ],
+      },
+    ],
+    features: [
+      { feature: 'Professional photography & marketing' },
+      { feature: 'Tenant screening & placement' },
+      { feature: 'Rent collection & financial reporting' },
+      { feature: 'Maintenance coordination' },
+      { feature: 'Property inspections' },
+      { feature: 'Lease renewals & enforcement' },
+      { feature: '24/7 emergency support' },
+      { feature: '12-month rent guarantee' },
+    ],
+    benefits: [
+      {
+        title: 'Maximize Your ROI',
+        description:
+          'Strategic pricing based on comprehensive market analysis ensures you get top dollar while minimizing vacancy periods. Our efficient maintenance coordination keeps costs down.',
+      },
+      {
+        title: 'Complete Peace of Mind',
+        description:
+          'From 3 AM emergency calls to lease enforcement, we handle it all. You'll never have to deal with tenant issues, repairs, or middle-of-the-night emergencies.',
+      },
+      {
+        title: 'Protected Income Stream',
+        description:
+          'Our exclusive 12-month rent guarantee means you get paid even if your tenant doesn't. Your investment income is secured from day one.',
+      },
+    ],
+    pricingNote: '8% of monthly rent. No hidden fees or additional charges.',
+  },
+  {
+    name: 'Tenant Placement Services',
+    slug: 'tenant-placement-services',
+    icon: 'users',
+    order: 1,
+    featured: true,
+    published: true,
+    shortDescription:
+      'Professional tenant placement with comprehensive screening. Find qualified, reliable tenants fast with our 30-day placement guarantee.',
+    fullDescription: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'Our tenant placement service is perfect for self-managing landlords who want help finding the right tenant. We handle the entire placement process from start to finish—creating a compelling listing with professional photography, marketing your property across multiple platforms, coordinating showings, screening applicants with rigorous background and credit checks, and preparing all lease documentation.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'We only recommend tenants who meet our strict qualification criteria, giving you confidence that you're getting a responsible, financially stable resident who will take care of your property and pay rent on time.',
+          },
+        ],
+      },
+    ],
+    features: [
+      { feature: 'Professional listing & marketing' },
+      { feature: 'Showings & applications' },
+      { feature: 'Comprehensive tenant screening' },
+      { feature: 'Credit & background checks' },
+      { feature: 'Rental history verification' },
+      { feature: 'Income verification' },
+      { feature: 'Lease preparation & signing' },
+      { feature: '30-day placement guarantee' },
+    ],
+    benefits: [
+      {
+        title: 'Quality Tenants Only',
+        description:
+          'Our multi-step screening process includes credit checks, criminal background checks, eviction history, rental history verification, and income verification. We only present applicants who meet strict qualification standards.',
+      },
+      {
+        title: 'Fast Placement',
+        description:
+          'Professional marketing and photography get your property noticed quickly. Most properties are leased within 15 days, and our 30-day guarantee ensures you're protected.',
+      },
+      {
+        title: 'Legal Protection',
+        description:
+          'All leases are prepared using attorney-reviewed templates that comply with Georgia landlord-tenant law, protecting your interests and minimizing legal risk.',
+      },
+    ],
+    pricingNote: '50% of first month's rent. One-time fee, no ongoing charges.',
+  },
+  {
+    name: 'Lease Renewal Services',
+    slug: 'lease-renewal-services',
+    icon: 'clipboard',
+    order: 2,
+    featured: false,
+    published: true,
+    shortDescription:
+      'Professional lease renewal coordination and tenant retention. Keep great tenants and avoid costly turnovers.',
+    fullDescription: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'Tenant turnover is one of the biggest expenses for rental property owners. Our lease renewal service helps you retain quality tenants by managing the entire renewal process professionally. We conduct market analysis to set competitive renewal rates, communicate with tenants well in advance of lease expiration, negotiate renewal terms, and prepare updated lease documentation.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'By renewing existing leases, you avoid vacancy periods, turnover costs, and the time-consuming process of finding new tenants. Our renewal rate optimization ensures you stay competitive with market rates while maximizing your rental income.',
+          },
+        ],
+      },
+    ],
+    features: [
+      { feature: 'Market rent analysis' },
+      { feature: 'Tenant communication' },
+      { feature: 'Renewal negotiation' },
+      { feature: 'Lease document preparation' },
+      { feature: 'Competitive rate optimization' },
+      { feature: 'Timeline management' },
+    ],
+    benefits: [
+      {
+        title: 'Avoid Turnover Costs',
+        description:
+          'Renewing an existing lease eliminates costly vacancy periods, cleaning, repairs, marketing expenses, and lost rent that come with tenant turnover.',
+      },
+      {
+        title: 'Maximize Revenue',
+        description:
+          'We analyze current market rates to ensure your renewal rent is optimized—competitive enough to retain good tenants while maximizing your income.',
+      },
+    ],
+    pricingNote: '$150 per successful renewal. Includes market analysis, negotiation, and documentation.',
+  },
+  {
+    name: 'Property Marketing',
+    slug: 'property-marketing',
+    icon: 'megaphone',
+    order: 3,
+    featured: false,
+    published: true,
+    shortDescription:
+      'Professional photography, listing optimization, and multi-platform marketing to attract qualified tenants quickly.',
+    fullDescription: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'First impressions matter. Our property marketing service ensures your rental stands out from the competition with professional photography, compelling descriptions, and strategic placement across the top rental platforms. We create listings that highlight your property's best features and attract qualified applicants.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'From Zillow and Apartments.com to RE/MAX's nationwide network, we ensure maximum visibility for your property. Combined with our market analysis and competitive pricing strategy, most properties receive qualified applications within days.',
+          },
+        ],
+      },
+    ],
+    features: [
+      { feature: 'Professional photography' },
+      { feature: 'Listing optimization' },
+      { feature: 'Multi-platform syndication' },
+      { feature: 'Competitive pricing analysis' },
+      { feature: 'Virtual tours (optional)' },
+      { feature: 'Showing coordination' },
+    ],
+    benefits: [
+      {
+        title: 'Professional Presentation',
+        description:
+          'High-quality photos and well-written descriptions showcase your property in the best light, attracting more interest and higher-quality applicants.',
+      },
+      {
+        title: 'Maximum Exposure',
+        description:
+          'Your listing reaches thousands of potential tenants through Zillow, Trulia, Apartments.com, Realtor.com, and the RE/MAX network.',
+      },
+    ],
+    pricingNote: 'Included with Full-Service Management and Tenant Placement. $250 as standalone service.',
+  },
+  {
+    name: 'Maintenance Coordination',
+    slug: 'maintenance-coordination',
+    icon: 'wrench',
+    order: 4,
+    featured: true,
+    published: true,
+    shortDescription:
+      'Reliable, cost-effective maintenance and repairs through our network of licensed, insured contractors.',
+    fullDescription: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'Property maintenance doesn't have to be a headache. Our maintenance coordination service connects you with our trusted network of licensed, insured contractors who provide quality work at competitive prices. We handle everything from routine maintenance to emergency repairs, coordinating schedules, ensuring quality work, and keeping you informed every step of the way.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'With 24/7 emergency support and a reputation for fast response times, we protect your property value while keeping tenants satisfied. All work is documented with photos and invoices for your records.',
+          },
+        ],
+      },
+    ],
+    features: [
+      { feature: '24/7 emergency coordination' },
+      { feature: 'Licensed & insured contractors' },
+      { feature: 'Competitive pricing' },
+      { feature: 'Quality assurance' },
+      { feature: 'Photo documentation' },
+      { feature: 'Preventative maintenance programs' },
+      { feature: 'Vendor relationship management' },
+    ],
+    benefits: [
+      {
+        title: 'Cost Savings',
+        description:
+          'Our established relationships with contractors mean you get better pricing than you'd get on your own. We also prevent small issues from becoming expensive repairs through proactive maintenance.',
+      },
+      {
+        title: 'Fast Response',
+        description:
+          'Whether it's a routine repair or a 3 AM emergency, our network responds quickly to protect your property and keep tenants happy.',
+      },
+      {
+        title: 'Quality Guaranteed',
+        description:
+          'All contractors are vetted, licensed, and insured. We inspect completed work to ensure it meets our quality standards before approving payment.',
+      },
+    ],
+    pricingNote: 'No markup on contractor invoices. $75 coordination fee per work order. Included with Full-Service Management.',
+  },
+  {
+    name: 'Financial Reporting',
+    slug: 'financial-reporting',
+    icon: 'chart',
+    order: 5,
+    featured: false,
+    published: true,
+    shortDescription:
+      'Detailed monthly statements, online portal access, and transparent accounting for complete visibility into your investment.',
+    fullDescription: [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'Understanding your investment's financial performance shouldn't require an accounting degree. Our financial reporting service provides clear, detailed monthly statements that show exactly where your money is going and coming from. Track rental income, expenses, repairs, and net operating income all in one easy-to-read report.',
+          },
+        ],
+      },
+      {
+        type: 'paragraph',
+        children: [
+          {
+            text: 'With 24/7 access to your online owner portal, you can check account balances, view invoices, download tax documents, and monitor property performance anytime, anywhere. All transactions are documented and categorized for easy tax preparation.',
+          },
+        ],
+      },
+    ],
+    features: [
+      { feature: 'Monthly financial statements' },
+      { feature: 'Online owner portal' },
+      { feature: 'Digital invoice storage' },
+      { feature: 'Year-end tax documents' },
+      { feature: 'Expense categorization' },
+      { feature: 'Direct deposit' },
+      { feature: 'Real-time reporting' },
+    ],
+    benefits: [
+      {
+        title: 'Complete Transparency',
+        description:
+          'Every dollar is accounted for and documented. You'll always know exactly how your property is performing financially.',
+      },
+      {
+        title: 'Tax Prep Made Easy',
+        description:
+          'All expenses are categorized and documented with receipts. Year-end statements and 1099s are generated automatically, making tax season simple.',
+      },
+    ],
+    pricingNote: 'Included with Full-Service Management. Available as add-on to Tenant Placement for $25/month.',
+  },
+]

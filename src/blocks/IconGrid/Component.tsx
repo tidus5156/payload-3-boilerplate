@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import type { IconGridBlock as IconGridBlockType } from '@/payload-types'
 import {
@@ -30,6 +32,24 @@ const iconMap = {
   file: FileText,
   lock: Lock,
   map: MapPin,
+}
+
+const iconColorStyles = {
+  skyBlue: {
+    bg: 'bg-skyBlue',
+    shadow: 'shadow-glow-navy hover:shadow-glow-navy',
+    glow: 'bg-skyBlue',
+  },
+  sageGreen: {
+    bg: 'bg-sageGreen',
+    shadow: 'shadow-md hover:shadow-lg',
+    glow: 'bg-sageGreen',
+  },
+  warmGold: {
+    bg: 'bg-gradient-gold',
+    shadow: 'shadow-lg hover:shadow-glow-gold',
+    glow: 'bg-gradient-gold',
+  },
 }
 
 export const IconGridBlock: React.FC<IconGridBlockType> = ({
@@ -72,6 +92,7 @@ export const IconGridBlock: React.FC<IconGridBlockType> = ({
         <div className={`grid ${gridClasses[columns as keyof typeof gridClasses] || gridClasses.three} gap-8 lg:gap-10`}>
           {items?.map((item, index) => {
             const IconComponent = iconMap[item.icon as keyof typeof iconMap] || Home
+            const colorStyles = iconColorStyles[(item.iconColor as keyof typeof iconColorStyles) || 'skyBlue']
 
             return (
               <ScrollAnimation
@@ -96,14 +117,18 @@ export const IconGridBlock: React.FC<IconGridBlockType> = ({
                   {/* Icon */}
                   <div className={cn(
                     "relative inline-flex items-center justify-center w-20 h-20 mb-6",
-                    "rounded-2xl bg-gradient-gold",
+                    "rounded-full",
+                    colorStyles.bg,
                     "group-hover:scale-110 group-hover:rotate-6",
                     "transition-all duration-500 ease-out",
-                    "shadow-lg group-hover:shadow-glow-gold"
+                    colorStyles.shadow
                   )}>
                     <IconComponent className="w-10 h-10 text-white relative z-10" />
                     {/* Glow effect */}
-                    <div className="absolute inset-0 bg-gradient-gold opacity-50 blur-xl rounded-2xl group-hover:opacity-75 transition-opacity duration-500" />
+                    <div className={cn(
+                      "absolute inset-0 opacity-50 blur-xl rounded-full group-hover:opacity-75 transition-opacity duration-500",
+                      colorStyles.glow
+                    )} />
                   </div>
 
                   {/* Title */}

@@ -2,16 +2,24 @@ import type { Field } from 'payload'
 
 import deepMerge from '@/utilities/deepMerge'
 
-export type LinkAppearances = 'default' | 'outline'
+export type LinkAppearances = 'primary' | 'secondary' | 'outline' | 'default'
 
 export const appearanceOptions: Record<LinkAppearances, { label: string; value: string }> = {
-  default: {
-    label: 'Default',
-    value: 'default',
+  primary: {
+    label: 'Primary (Gold Button)',
+    value: 'primary',
+  },
+  secondary: {
+    label: 'Secondary (Blue Button)',
+    value: 'secondary',
   },
   outline: {
-    label: 'Outline',
+    label: 'Outline (Blue Border)',
     value: 'outline',
+  },
+  default: {
+    label: 'Default (Shadcn)',
+    value: 'default',
   },
 }
 
@@ -119,7 +127,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
   }
 
   if (appearances !== false) {
-    let appearanceOptionsToUse = [appearanceOptions.default, appearanceOptions.outline]
+    let appearanceOptionsToUse = [appearanceOptions.primary, appearanceOptions.secondary, appearanceOptions.outline]
 
     if (appearances) {
       appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance])

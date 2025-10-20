@@ -2,7 +2,7 @@ import React from 'react'
 import type { TestimonialsCarouselBlock as TestimonialsCarouselBlockType, Testimonial } from '@/payload-types'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
-import { Star } from 'lucide-react'
+import { StarRating } from './StarRating'
 
 export const TestimonialsCarouselBlock: React.FC<TestimonialsCarouselBlockType> = async ({
   heading,
@@ -58,11 +58,7 @@ export const TestimonialsCarouselBlock: React.FC<TestimonialsCarouselBlockType> 
             className="flex flex-col p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow"
           >
             {/* Rating Stars */}
-            <div className="flex gap-1 mb-4">
-              {Array.from({ length: testimonial.rating || 5 }).map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
+            <StarRating rating={testimonial.rating || 5} />
 
             {/* Quote */}
             <blockquote className="text-base mb-6 flex-grow">

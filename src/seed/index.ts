@@ -1,10 +1,18 @@
-import { loadEnv } from '../utilities/loadEnv'
+import { config as dotenvConfig } from 'dotenv'
+import { resolve } from 'path'
 
-// Load environment variables FIRST, before importing config
-loadEnv()
+// Load environment variables FIRST using dotenv
+dotenvConfig({ path: resolve(process.cwd(), '.env') })
+
+// Verify critical env vars are loaded
+if (!process.env.PAYLOAD_SECRET) {
+  throw new Error('PAYLOAD_SECRET is not set in environment variables')
+}
+if (!process.env.DATABASE_URI) {
+  throw new Error('DATABASE_URI is not set in environment variables')
+}
 
 import { getPayload } from 'payload'
-import config from '@payload-config'
 import { settingsData } from './settings'
 import { teamMembersData } from './team'
 import { testimonialsData } from './testimonials'
@@ -14,6 +22,8 @@ import { homepageData } from './pages/homepage'
 
 const seed = async () => {
   try {
+    // Dynamically import config after env vars are loaded
+    const { default: config } = await import('@payload-config')
     const payload = await getPayload({ config })
 
     console.log('🌱 Starting database seed...\n')

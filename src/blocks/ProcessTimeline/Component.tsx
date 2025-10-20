@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import type { ProcessTimelineBlock as ProcessTimelineBlockType } from '@/payload-types'
 import { cn } from '@/utilities/cn'

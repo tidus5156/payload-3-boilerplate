@@ -16,6 +16,7 @@ import { Neighborhoods } from './collections/Neighborhoods'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Properties } from './collections/Properties'
+import { Services } from './collections/Services'
 import { TeamMembers } from './collections/TeamMembers'
 import { Testimonials } from './collections/Testimonials'
 import { Users } from './collections/Users'
@@ -76,6 +77,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
+    push: false,
   }),
   collections: [
     // Core Collections
@@ -88,6 +90,7 @@ export default buildConfig({
     // Property Management Collections
     Properties,
     Neighborhoods,
+    Services,
     FormSubmissions,
     // Content Collections
     Testimonials,

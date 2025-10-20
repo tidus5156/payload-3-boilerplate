@@ -7,6 +7,7 @@ import { allNeighborhoodsData } from '@/seed/neighborhoods'
 import { categoriesData } from '@/seed/categories'
 import { homepageData } from '@/seed/pages/homepage'
 import { faqsData } from '@/seed/faqs'
+import { servicesData } from '@/seed/services'
 
 export const seedAllay = async ({
   payload,
@@ -128,7 +129,24 @@ export const seedAllay = async ({
     }
     payload.logger.info(`✅ ${faqs.length} FAQs seeded`)
 
-    // 7. Seed Hero Background Image
+    // 7. Seed Services
+    payload.logger.info('🏢 Seeding Services...')
+    const services: any[] = []
+    for (const service of servicesData) {
+      try {
+        const created = await payload.create({
+          collection: 'services',
+          data: service as any,
+        })
+        services.push(created)
+        payload.logger.info(`   - Created: ${service.name}`)
+      } catch (error) {
+        payload.logger.error(`   ❌ Error creating ${service.name}:`, error)
+      }
+    }
+    payload.logger.info(`✅ ${services.length} services seeded`)
+
+    // 8. Seed Hero Background Image
     payload.logger.info('🖼️  Uploading hero background image...')
     let heroImageId: number | string | null = null
     try {
@@ -238,6 +256,7 @@ export const seedAllay = async ({
     payload.logger.info(`   - Neighborhoods: ${neighborhoods.length}`)
     payload.logger.info(`   - Categories: ${categories.length}`)
     payload.logger.info(`   - FAQs: ${faqs.length}`)
+    payload.logger.info(`   - Services: ${services.length}`)
     payload.logger.info(`   - Pages: 1 (Homepage)`)
     payload.logger.info('✨ Your Allay Property Management site is ready for production!')
   } catch (error) {

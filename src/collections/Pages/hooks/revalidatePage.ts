@@ -14,7 +14,12 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
 
     payload.logger.info(`Revalidating page at path: ${path}`)
 
-    revalidatePath(path)
+    try {
+      revalidatePath(path)
+    } catch (error) {
+      // Revalidation may fail when running outside Next.js context (e.g., seed scripts)
+      payload.logger.warn(`Could not revalidate path ${path}: ${error}`)
+    }
   }
 
   // If the page was previously published, we need to revalidate the old path
@@ -23,7 +28,12 @@ export const revalidatePage: CollectionAfterChangeHook<Page> = ({
 
     payload.logger.info(`Revalidating old page at path: ${oldPath}`)
 
-    revalidatePath(oldPath)
+    try {
+      revalidatePath(oldPath)
+    } catch (error) {
+      // Revalidation may fail when running outside Next.js context (e.g., seed scripts)
+      payload.logger.warn(`Could not revalidate path ${oldPath}: ${error}`)
+    }
   }
 
   return doc

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "payload-cms": {
+      "command": "npx",
+      "args": [
+        "tsx",
+        "scripts/mcp-server.ts"
+      ],
+      "env": {
+        "DATABASE_URI": "postgresql://user:password@localhost:5432/allay_pm",
+        "PAYLOAD_SECRET": "your-payload-secret-from-env-file",
+        "NEXT_PUBLIC_SERVER_URL": "http://localhost:3002"
+      }
+    }
+  }
+}

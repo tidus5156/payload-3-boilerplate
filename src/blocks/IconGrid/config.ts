@@ -45,6 +45,20 @@ export const IconGrid: Block = {
           ],
         },
         {
+          name: 'iconColor',
+          type: 'select',
+          required: true,
+          defaultValue: 'skyBlue',
+          options: [
+            { label: 'Sky Blue (Approachable, Modern)', value: 'skyBlue' },
+            { label: 'Sage Green (Success, Growth)', value: 'sageGreen' },
+            { label: 'Warm Gold (Premium, Value)', value: 'warmGold' },
+          ],
+          admin: {
+            description: 'Choose the background color for this icon',
+          },
+        },
+        {
           name: 'title',
           type: 'text',
           required: true,

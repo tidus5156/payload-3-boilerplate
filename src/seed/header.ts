@@ -10,29 +10,152 @@ export const headerData = {
         {
           link: {
             type: 'custom',
-            label: 'Full-Service Management',
-            url: '/services/full-service',
+            label: 'Full-Service Property Management',
+            url: '/services#full-service',
           },
         },
         {
           link: {
             type: 'custom',
-            label: 'Tenant Placement',
-            url: '/services/tenant-placement',
+            label: 'Tenant Placement Services',
+            url: '/services#tenant-placement',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Lease Renewal Services',
+            url: '/services#lease-renewal',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Property Marketing',
+            url: '/services#property-marketing',
           },
         },
         {
           link: {
             type: 'custom',
             label: 'Maintenance Coordination',
-            url: '/services/maintenance',
+            url: '/services#maintenance',
           },
         },
         {
           link: {
             type: 'custom',
-            label: 'Property Inspections',
-            url: '/services/inspections',
+            label: 'Financial Reporting',
+            url: '/services#financial-reporting',
+          },
+        },
+      ],
+    },
+    {
+      link: {
+        type: 'custom',
+        label: 'Property Owners',
+        url: '/owners',
+      },
+      children: [
+        {
+          link: {
+            type: 'custom',
+            label: 'Why Choose Allay',
+            url: '/owners#why-choose',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Our Process',
+            url: '/owners/process',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Pricing & Fees',
+            url: '/owners/pricing',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Owner Portal',
+            url: '/owner-portal',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Testimonials',
+            url: '/owners/testimonials',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'FAQs for Owners',
+            url: '/owners/faq',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Get Started',
+            url: '/contact',
+          },
+        },
+      ],
+    },
+    {
+      link: {
+        type: 'custom',
+        label: 'Rentals',
+        url: '/properties',
+      },
+    },
+    {
+      link: {
+        type: 'custom',
+        label: 'Residents',
+        url: '/residents',
+      },
+      children: [
+        {
+          link: {
+            type: 'custom',
+            label: 'Search Available Properties',
+            url: '/properties',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Apply Online',
+            url: '/residents/apply',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Resident Portal Login',
+            url: '/resident-portal',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'Resident Resources',
+            url: '/residents/resources',
+          },
+        },
+        {
+          link: {
+            type: 'custom',
+            label: 'FAQs for Residents',
+            url: '/residents/faq',
           },
         },
       ],
@@ -43,42 +166,12 @@ export const headerData = {
         label: 'About',
         url: '/about',
       },
-      children: [
-        {
-          link: {
-            type: 'custom',
-            label: 'Our Team',
-            url: '/about/team',
-          },
-        },
-        {
-          link: {
-            type: 'custom',
-            label: 'Testimonials',
-            url: '/about/testimonials',
-          },
-        },
-        {
-          link: {
-            type: 'custom',
-            label: 'Why Choose Us',
-            url: '/about/why-choose-us',
-          },
-        },
-      ],
     },
     {
       link: {
         type: 'custom',
-        label: 'Neighborhoods',
-        url: '/neighborhoods',
-      },
-    },
-    {
-      link: {
-        type: 'custom',
-        label: 'Blog',
-        url: '/posts',
+        label: 'Resources',
+        url: '/resources',
       },
     },
     {

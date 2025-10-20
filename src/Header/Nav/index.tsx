@@ -14,21 +14,6 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null)
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (openDropdown !== null) {
-        const ref = dropdownRefs.current[openDropdown]
-        if (ref && !ref.contains(event.target as Node)) {
-          setOpenDropdown(null)
-        }
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [openDropdown])
-
   // Close dropdown on escape key
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -55,9 +40,10 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
               ref={(el) => {
                 dropdownRefs.current[i] = el
               }}
+              onMouseEnter={() => setOpenDropdown(i)}
+              onMouseLeave={() => setOpenDropdown(null)}
             >
               <button
-                onClick={() => setOpenDropdown(isOpen ? null : i)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
@@ -83,19 +69,24 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
 
               {isOpen && (
                 <div
-                  className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-md shadow-lg z-50"
-                  role="menu"
+                  className="absolute left-0 pt-2"
+                  style={{ top: '100%' }}
                 >
-                  <div className="py-1">
-                    {navItem.children!.map((childItem, childIndex) => (
-                      <div key={childIndex} className="px-1" onClick={() => setOpenDropdown(null)}>
-                        <CMSLink
-                          {...childItem.link}
-                          appearance="link"
-                          className="block px-3 py-2 text-sm hover:bg-accent rounded-sm transition-colors"
-                        />
-                      </div>
-                    ))}
+                  <div
+                    className="min-w-64 bg-white border border-lightGray rounded-lg shadow-xl z-50"
+                    role="menu"
+                  >
+                    <div className="py-2">
+                      {navItem.children!.map((childItem, childIndex) => (
+                        <div key={childIndex} className="px-1">
+                          <CMSLink
+                            {...childItem.link}
+                            appearance="link"
+                            className="block px-4 py-2.5 text-sm text-charcoal hover:bg-lightGray hover:text-skyBlue rounded-md transition-colors whitespace-nowrap"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}

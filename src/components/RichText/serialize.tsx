@@ -138,20 +138,32 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               )
             }
             case 'heading': {
-              const Tag = node?.tag
-              return (
-                <Tag className="col-start-2" key={index}>
-                  {serializedChildren}
-                </Tag>
-              )
+              const tag = (node as any).tag
+              if (tag === 'h1') {
+                return <h1 className="col-start-2" key={index}>{serializedChildren}</h1>
+              }
+              if (tag === 'h3') {
+                return <h3 className="col-start-2" key={index}>{serializedChildren}</h3>
+              }
+              if (tag === 'h4') {
+                return <h4 className="col-start-2" key={index}>{serializedChildren}</h4>
+              }
+              if (tag === 'h5') {
+                return <h5 className="col-start-2" key={index}>{serializedChildren}</h5>
+              }
+              if (tag === 'h6') {
+                return <h6 className="col-start-2" key={index}>{serializedChildren}</h6>
+              }
+              // Default to h2
+              return <h2 className="col-start-2" key={index}>{serializedChildren}</h2>
             }
             case 'list': {
-              const Tag = node?.tag
-              return (
-                <Tag className="list col-start-2" key={index}>
-                  {serializedChildren}
-                </Tag>
-              )
+              const listTag = (node as any).tag
+              if (listTag === 'ol') {
+                return <ol className="list col-start-2" key={index}>{serializedChildren}</ol>
+              }
+              // Default to ul
+              return <ul className="list col-start-2" key={index}>{serializedChildren}</ul>
             }
             case 'listitem': {
               if (node?.checked != null) {

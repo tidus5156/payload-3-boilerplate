@@ -19,6 +19,7 @@ export interface Config {
     comments: Comment;
     properties: Property;
     neighborhoods: Neighborhood;
+    services: Service;
     'contact-submissions': ContactSubmission;
     testimonials: Testimonial;
     'team-members': TeamMember;
@@ -41,6 +42,7 @@ export interface Config {
     comments: CommentsSelect<false> | CommentsSelect<true>;
     properties: PropertiesSelect<false> | PropertiesSelect<true>;
     neighborhoods: NeighborhoodsSelect<false> | NeighborhoodsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
@@ -128,7 +130,7 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'outline') | null;
+            appearance?: ('primary' | 'secondary' | 'outline') | null;
           };
           id?: string | null;
         }[]
@@ -156,6 +158,9 @@ export interface Page {
     | StatisticsBlock
     | FAQAccordionBlock
     | ProcessTimelineBlock
+    | TeamGridBlock
+    | TrustBadgesBlock
+    | HTMLEmbedBlock
   )[];
   meta?: {
     title?: string | null;
@@ -284,7 +289,7 @@ export interface CallToActionBlock {
           } | null;
           url?: string | null;
           label: string;
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('primary' | 'secondary' | 'outline') | null;
         };
         id?: string | null;
       }[]
@@ -326,7 +331,7 @@ export interface ContentBlock {
           } | null;
           url?: string | null;
           label: string;
-          appearance?: ('default' | 'outline') | null;
+          appearance?: ('primary' | 'secondary' | 'outline') | null;
         };
         id?: string | null;
       }[]
@@ -670,6 +675,7 @@ export interface IconGridBlock {
       | 'file'
       | 'lock'
       | 'map';
+    iconColor: 'skyBlue' | 'sageGreen' | 'warmGold';
     title: string;
     description: string;
     id?: string | null;
@@ -878,6 +884,100 @@ export interface ProcessTimelineBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamGridBlock".
+ */
+export interface TeamGridBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  teamMembers?: (number | TeamMember)[] | null;
+  showAllActive?: boolean | null;
+  limit?: number | null;
+  columns?: ('two' | 'three' | 'four') | null;
+  showBio?: boolean | null;
+  showContact?: boolean | null;
+  showLinkedIn?: boolean | null;
+  backgroundColor?: ('transparent' | 'lightGray' | 'white') | null;
+  spacing?: ('compact' | 'normal' | 'spacious') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'teamGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-members".
+ */
+export interface TeamMember {
+  id: number;
+  name: string;
+  title: string;
+  photo?: (number | null) | Media;
+  bio?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  certifications?:
+    | {
+        certification: string;
+        id?: string | null;
+      }[]
+    | null;
+  email?: string | null;
+  phone?: string | null;
+  linkedin?: string | null;
+  order: number;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TrustBadgesBlock".
+ */
+export interface TrustBadgesBlock {
+  heading?: string | null;
+  subheading?: string | null;
+  badges?:
+    | {
+        title: string;
+        icon: 'shield' | 'award' | 'check' | 'star' | 'building' | 'certificate' | 'users' | 'lock';
+        description?: string | null;
+        logo?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  layout?: ('grid' | 'row' | 'compact') | null;
+  columns?: ('two' | 'three' | 'four' | 'six') | null;
+  backgroundColor?: ('transparent' | 'lightGray' | 'white' | 'deepNavy') | null;
+  spacing?: ('compact' | 'normal' | 'spacious') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'trustBadges';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HTMLEmbedBlock".
+ */
+export interface HTMLEmbedBlock {
+  embedLabel?: string | null;
+  embedCode: string;
+  containerMaxWidth?: ('full' | 'container' | 'narrow') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'htmlEmbed';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "comments".
  */
 export interface Comment {
@@ -1028,6 +1128,61 @@ export interface Neighborhood {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: number;
+  name: string;
+  order: number;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  icon:
+    | 'building'
+    | 'users'
+    | 'clipboard'
+    | 'megaphone'
+    | 'wrench'
+    | 'chart'
+    | 'dollar'
+    | 'shield'
+    | 'home'
+    | 'calendar';
+  shortDescription: string;
+  fullDescription: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  features: {
+    feature: string;
+    id?: string | null;
+  }[];
+  benefits?:
+    | {
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  pricingNote?: string | null;
+  heroImage?: (number | null) | Media;
+  featured?: boolean | null;
+  published?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contact-submissions".
  */
 export interface ContactSubmission {
@@ -1052,44 +1207,6 @@ export interface ContactSubmission {
     referrer?: string | null;
   };
   internalNotes?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "team-members".
- */
-export interface TeamMember {
-  id: number;
-  name: string;
-  title: string;
-  photo: number | Media;
-  bio?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  certifications?:
-    | {
-        certification: string;
-        id?: string | null;
-      }[]
-    | null;
-  email?: string | null;
-  phone?: string | null;
-  linkedin?: string | null;
-  order: number;
-  active?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1199,6 +1316,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'neighborhoods';
         value: number | Neighborhood;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: number | Service;
       } | null)
     | ({
         relationTo: 'contact-submissions';
@@ -1395,6 +1516,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     icon?: T;
+                    iconColor?: T;
                     title?: T;
                     description?: T;
                     id?: T;
@@ -1541,6 +1663,53 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               layout?: T;
               spacing?: T;
+              id?: T;
+              blockName?: T;
+            };
+        teamGrid?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              teamMembers?: T;
+              showAllActive?: T;
+              limit?: T;
+              columns?: T;
+              showBio?: T;
+              showContact?: T;
+              showLinkedIn?: T;
+              backgroundColor?: T;
+              spacing?: T;
+              id?: T;
+              blockName?: T;
+            };
+        trustBadges?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              badges?:
+                | T
+                | {
+                    title?: T;
+                    icon?: T;
+                    description?: T;
+                    logo?: T;
+                    id?: T;
+                  };
+              layout?: T;
+              columns?: T;
+              backgroundColor?: T;
+              spacing?: T;
+              id?: T;
+              blockName?: T;
+            };
+        htmlEmbed?:
+          | T
+          | {
+              embedLabel?: T;
+              embedCode?: T;
+              containerMaxWidth?: T;
               id?: T;
               blockName?: T;
             };
@@ -1834,6 +2003,38 @@ export interface NeighborhoodsSelect<T extends boolean = true> {
         id?: T;
       };
   featured?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  name?: T;
+  order?: T;
+  slug?: T;
+  slugLock?: T;
+  icon?: T;
+  shortDescription?: T;
+  fullDescription?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  benefits?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  pricingNote?: T;
+  heroImage?: T;
+  featured?: T;
+  published?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2153,6 +2354,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Setting {
   id: number;
+  logo?: (number | null) | Media;
   siteName: string;
   tagline?: string | null;
   phone: string;
@@ -2166,6 +2368,8 @@ export interface Setting {
     twitter?: string | null;
     youtube?: string | null;
   };
+  ownerPortalUrl?: string | null;
+  residentPortalUrl?: string | null;
   googleAnalyticsId?: string | null;
   facebookPixelId?: string | null;
   gtmId?: string | null;
@@ -2255,6 +2459,7 @@ export interface Footer {
  * via the `definition` "settings_select".
  */
 export interface SettingsSelect<T extends boolean = true> {
+  logo?: T;
   siteName?: T;
   tagline?: T;
   phone?: T;
@@ -2270,6 +2475,8 @@ export interface SettingsSelect<T extends boolean = true> {
         twitter?: T;
         youtube?: T;
       };
+  ownerPortalUrl?: T;
+  residentPortalUrl?: T;
   googleAnalyticsId?: T;
   facebookPixelId?: T;
   gtmId?: T;

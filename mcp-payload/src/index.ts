@@ -22,6 +22,8 @@ import { queryDocumentsTool } from './tools/query-documents.js'
 import { findDocumentTool } from './tools/find-document.js'
 import { deleteDocumentTool } from './tools/delete-document.js'
 import { uploadMediaTool } from './tools/upload-media.js'
+import { updateGlobalTool } from './tools/update-global.js'
+import { findGlobalTool } from './tools/find-global.js'
 
 // Resource implementations
 import { listCollectionsResource } from './resources/list-collections.js'
@@ -183,6 +185,38 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           required: ['filePath'],
         },
       },
+      {
+        name: 'payload_update_global',
+        description: 'Update global settings (e.g., "settings", "header", "footer")',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            slug: {
+              type: 'string',
+              description: 'The global slug (e.g., "settings", "header", "footer")',
+            },
+            data: {
+              type: 'object',
+              description: 'The updated global data as JSON',
+            },
+          },
+          required: ['slug', 'data'],
+        },
+      },
+      {
+        name: 'payload_find_global',
+        description: 'Retrieve global settings (e.g., "settings", "header", "footer")',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            slug: {
+              type: 'string',
+              description: 'The global slug (e.g., "settings", "header", "footer")',
+            },
+          },
+          required: ['slug'],
+        },
+      },
     ],
   }
 })
@@ -205,6 +239,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         return await deleteDocumentTool(payload, args)
       case 'payload_upload_media':
         return await uploadMediaTool(payload, args)
+      case 'payload_update_global':
+        return await updateGlobalTool(payload, args)
+      case 'payload_find_global':
+        return await findGlobalTool(payload, args)
       default:
         throw new Error(`Unknown tool: ${name}`)
     }

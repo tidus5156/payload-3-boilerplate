@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import type { PricingComparisonBlock as PricingComparisonBlockType } from '@/payload-types'
 import { Check, X } from 'lucide-react'
@@ -69,7 +71,7 @@ export const PricingComparisonBlock: React.FC<PricingComparisonBlockType> = ({ h
                 type="custom"
                 url={plan.ctaUrl}
                 label={plan.ctaText}
-                appearance={plan.highlighted ? 'default' : 'outline'}
+                appearance={plan.highlighted ? 'primary' : 'outline'}
                 className="w-full"
               />
             )}

@@ -36,13 +36,13 @@ export const HeroCTABlock: React.FC<HeroCTABlockType> = ({
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {headline && (
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               {headline}
             </h2>
           )}
 
           {subheadline && (
-            <p className="text-xl mb-10 opacity-90">
+            <p className="text-xl mb-10 text-white/95">
               {subheadline}
             </p>
           )}
@@ -53,13 +53,8 @@ export const HeroCTABlock: React.FC<HeroCTABlockType> = ({
                 type="custom"
                 url={primaryCTA.url}
                 label={primaryCTA.text}
-                appearance="default"
+                appearance="primary"
                 size="lg"
-                className={cn(
-                  backgroundColor === 'lightGray'
-                    ? 'bg-slate-900 text-white hover:bg-slate-800'
-                    : 'bg-white text-slate-900 hover:bg-gray-100'
-                )}
               />
             )}
 
@@ -68,13 +63,8 @@ export const HeroCTABlock: React.FC<HeroCTABlockType> = ({
                 type="custom"
                 url={secondaryCTA.url}
                 label={secondaryCTA.text}
-                appearance="outline"
+                appearance="secondary"
                 size="lg"
-                className={cn(
-                  backgroundColor === 'lightGray'
-                    ? 'border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white'
-                    : 'border-white text-white hover:bg-white hover:text-slate-900'
-                )}
               />
             )}
           </div>

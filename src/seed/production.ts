@@ -1,19 +1,30 @@
-import { loadEnv } from '../utilities/loadEnv'
+import { config as dotenvConfig } from 'dotenv'
+import { resolve } from 'path'
 
-// Load environment variables FIRST, before importing config
-loadEnv()
+// Load environment variables FIRST using dotenv
+dotenvConfig({ path: resolve(process.cwd(), '.env') })
+
+// Verify critical env vars are loaded
+if (!process.env.PAYLOAD_SECRET) {
+  throw new Error('PAYLOAD_SECRET is not set in environment variables')
+}
+if (!process.env.DATABASE_URI) {
+  throw new Error('DATABASE_URI is not set in environment variables')
+}
 
 import { getPayload } from 'payload'
-import config from '@payload-config'
 import { settingsData } from './settings'
 import { teamMembersData } from './team'
 import { testimonialsData } from './testimonials'
 import { allNeighborhoodsData } from './neighborhoods'
 import { categoriesData } from './categories'
 import { homepageData } from './pages/homepage'
+import { headerData } from './header'
 
 const productionSeed = async () => {
   try {
+    // Dynamically import config after env vars are loaded
+    const { default: config } = await import('@payload-config')
     const payload = await getPayload({ config })
 
     console.log('🌱 Starting production database seed...\n')
@@ -140,38 +151,7 @@ const productionSeed = async () => {
     try {
       await payload.updateGlobal({
         slug: 'header',
-        data: {
-          navItems: [
-            {
-              link: {
-                type: 'custom',
-                label: 'Home',
-                url: '/',
-              },
-            },
-            {
-              link: {
-                type: 'custom',
-                label: 'Services',
-                url: '/services',
-              },
-            },
-            {
-              link: {
-                type: 'custom',
-                label: 'About',
-                url: '/about',
-              },
-            },
-            {
-              link: {
-                type: 'custom',
-                label: 'Contact',
-                url: '/contact',
-              },
-            },
-          ],
-        },
+        data: headerData,
       })
       console.log('✅ Header navigation seeded\n')
     } catch (error) {

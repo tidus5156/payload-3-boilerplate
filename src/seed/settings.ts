@@ -12,6 +12,8 @@ export const settingsData = {
     twitter: 'https://twitter.com/allaypm',
     youtube: 'https://youtube.com/@allaypropertymanagement',
   },
+  ownerPortalUrl: 'https://remaxatlanta.rentvine.com/portals/owner/',
+  residentPortalUrl: 'https://remaxatlanta.rentvine.com/portals/resident/',
   googleAnalyticsId: '',
   facebookPixelId: '',
   gtmId: '',

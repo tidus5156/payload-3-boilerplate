@@ -1,0 +1,451 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "Payload Logo" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "Payload Logo" [ref=e7] [cursor=pointer]
+      - navigation "Desktop navigation" [ref=e9]:
+        - button "Services" [ref=e11] [cursor=pointer]:
+          - text: Services
+          - img [ref=e12] [cursor=pointer]
+        - button "Property Owners" [ref=e15] [cursor=pointer]:
+          - text: Property Owners
+          - img [ref=e16] [cursor=pointer]
+        - button "Residents" [ref=e19] [cursor=pointer]:
+          - text: Residents
+          - img [ref=e20] [cursor=pointer]
+        - link "About" [ref=e22] [cursor=pointer]:
+          - /url: /about
+        - link "Resources" [ref=e23] [cursor=pointer]:
+          - /url: /resources
+        - link "Contact" [ref=e24] [cursor=pointer]:
+          - /url: /contact
+        - link "Search" [ref=e25] [cursor=pointer]:
+          - /url: /search
+          - generic [ref=e26] [cursor=pointer]: Search
+          - img [ref=e27] [cursor=pointer]
+  - main [ref=e30]:
+    - article [ref=e31]:
+      - generic [ref=e32]:
+        - img "Modern Atlanta property with professional property management" [ref=e36]
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Stress Less. Earn More." [level=1] [ref=e42]
+            - paragraph [ref=e43]: Full-service property management for Metro Atlanta rental properties. Maximize your returns while we handle everything.
+          - generic [ref=e44]:
+            - link "Get Free Rental Analysis" [ref=e45] [cursor=pointer]:
+              - /url: /contact
+            - link "View Our Services" [ref=e46] [cursor=pointer]:
+              - /url: /services
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - img [ref=e50]
+              - generic [ref=e52]: 4.9/5 Rating
+            - generic [ref=e53]:
+              - img [ref=e55]
+              - generic [ref=e57]: 500+ Properties
+            - generic [ref=e58]:
+              - img [ref=e60]
+              - generic [ref=e62]: RE/MAX Backed
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - heading "Why Property Owners Choose Allay" [level=2] [ref=e69]: Why Property Owners Choose Allay
+          - paragraph [ref=e71]: We combine local expertise with RE/MAX resources to deliver exceptional results for your investment properties.
+        - generic [ref=e72]:
+          - generic [ref=e74]:
+            - img [ref=e78]
+            - heading "12-Month Rent Guarantee" [level=3] [ref=e81]
+            - paragraph [ref=e82]: We guarantee rent payments for 12 months with our exclusive tenant protection program. Your income is secured from day one.
+          - generic [ref=e84]:
+            - img [ref=e88]
+            - heading "Maximize Your Returns" [level=3] [ref=e91]
+            - paragraph [ref=e92]: Strategic pricing, minimal vacancies, and cost-effective maintenance mean more money in your pocket every month.
+          - generic [ref=e94]:
+            - img [ref=e98]
+            - heading "Quality Tenant Screening" [level=3] [ref=e104]
+            - paragraph [ref=e105]: Rigorous background checks, credit verification, and rental history analysis ensure only the best tenants for your property.
+          - generic [ref=e107]:
+            - img [ref=e111]
+            - heading "24/7 Emergency Support" [level=3] [ref=e115]
+            - paragraph [ref=e116]: Round-the-clock emergency maintenance coordination protects your property and keeps residents satisfied.
+          - generic [ref=e118]:
+            - img [ref=e122]
+            - heading "Transparent Reporting" [level=3] [ref=e126]
+            - paragraph [ref=e127]: Detailed monthly financial statements and online portal access keep you informed about every aspect of your investment.
+          - generic [ref=e129]:
+            - img [ref=e133]
+            - heading "Property Care Excellence" [level=3] [ref=e137]
+            - paragraph [ref=e138]: Regular inspections, preventative maintenance, and quality repairs preserve your property value over the long term.
+      - generic [ref=e143]:
+        - generic [ref=e144]:
+          - heading "Complete Property Management Solutions" [level=2] [ref=e145]: Complete Property Management Solutions
+          - paragraph [ref=e147]: From tenant placement to maintenance coordination, we handle every detail of property management.
+        - generic [ref=e148]:
+          - generic [ref=e151]:
+            - img [ref=e153]
+            - heading "Full-Service Management" [level=3] [ref=e157]
+            - paragraph [ref=e158]: Complete management of your rental property from marketing to move-out.
+            - list [ref=e159]:
+              - listitem [ref=e160]:
+                - img [ref=e162]
+                - generic [ref=e164]: Professional photography & marketing
+              - listitem [ref=e165]:
+                - img [ref=e167]
+                - generic [ref=e169]: Tenant screening & placement
+              - listitem [ref=e170]:
+                - img [ref=e172]
+                - generic [ref=e174]: Rent collection & financial reporting
+              - listitem [ref=e175]:
+                - img [ref=e177]
+                - generic [ref=e179]: Maintenance coordination
+              - listitem [ref=e180]:
+                - img [ref=e182]
+                - generic [ref=e184]: Property inspections
+              - listitem [ref=e185]:
+                - img [ref=e187]
+                - generic [ref=e189]: Lease renewals & enforcement
+            - link "Learn More" [ref=e190] [cursor=pointer]:
+              - /url: /services#full-service
+              - button "Learn More" [ref=e191] [cursor=pointer]:
+                - generic [ref=e193] [cursor=pointer]:
+                  - text: Learn More
+                  - img [ref=e194] [cursor=pointer]
+          - generic [ref=e197]:
+            - generic [ref=e198]: POPULAR
+            - generic [ref=e199]:
+              - img [ref=e201]
+              - heading "Tenant Placement Only" [level=3] [ref=e206]
+              - paragraph [ref=e207]: Need help finding the perfect tenant? We handle the entire placement process.
+              - list [ref=e208]:
+                - listitem [ref=e209]:
+                  - img [ref=e211]
+                  - generic [ref=e213]: Professional listing & marketing
+                - listitem [ref=e214]:
+                  - img [ref=e216]
+                  - generic [ref=e218]: Showings & applications
+                - listitem [ref=e219]:
+                  - img [ref=e221]
+                  - generic [ref=e223]: Comprehensive tenant screening
+                - listitem [ref=e224]:
+                  - img [ref=e226]
+                  - generic [ref=e228]: Lease preparation & signing
+                - listitem [ref=e229]:
+                  - img [ref=e231]
+                  - generic [ref=e233]: 30-day placement guarantee
+              - link "Learn More" [ref=e234] [cursor=pointer]:
+                - /url: /services#tenant-placement
+                - button "Learn More" [ref=e235] [cursor=pointer]:
+                  - generic [ref=e239] [cursor=pointer]:
+                    - text: Learn More
+                    - img [ref=e240] [cursor=pointer]
+          - generic [ref=e244]:
+            - img [ref=e246]
+            - heading "Maintenance Coordination" [level=3] [ref=e249]
+            - paragraph [ref=e250]: Leverage our network of licensed contractors for reliable, cost-effective repairs.
+            - list [ref=e251]:
+              - listitem [ref=e252]:
+                - img [ref=e254]
+                - generic [ref=e256]: 24/7 emergency coordination
+              - listitem [ref=e257]:
+                - img [ref=e259]
+                - generic [ref=e261]: Licensed & insured contractors
+              - listitem [ref=e262]:
+                - img [ref=e264]
+                - generic [ref=e266]: Competitive pricing
+              - listitem [ref=e267]:
+                - img [ref=e269]
+                - generic [ref=e271]: Quality assurance
+              - listitem [ref=e272]:
+                - img [ref=e274]
+                - generic [ref=e276]: Preventative maintenance programs
+            - link "Learn More" [ref=e277] [cursor=pointer]:
+              - /url: /services#maintenance
+              - button "Learn More" [ref=e278] [cursor=pointer]:
+                - generic [ref=e280] [cursor=pointer]:
+                  - text: Learn More
+                  - img [ref=e281] [cursor=pointer]
+      - region "Proven Results for Property Owners" [ref=e284]:
+        - generic [ref=e285]:
+          - generic [ref=e286]:
+            - heading "Proven Results for Property Owners" [level=2] [ref=e287]
+            - paragraph [ref=e288]: Our data-driven approach delivers measurable results that maximize your return on investment.
+          - generic [ref=e289]:
+            - group "Rent Collection Rate statistic" [ref=e290]:
+              - generic [ref=e295]:
+                - img [ref=e296]
+                - img [ref=e302]
+              - generic [ref=e305]: 98%
+              - generic [ref=e306]: Rent Collection Rate
+            - group "Average Days to Lease statistic" [ref=e307]:
+              - generic [ref=e312]:
+                - img [ref=e313]
+                - img [ref=e319]
+              - generic [ref=e322]: "15"
+              - generic [ref=e323]: Average Days to Lease
+            - group "Properties Managed statistic" [ref=e324]:
+              - generic [ref=e329]:
+                - img [ref=e330]
+                - img [ref=e336]
+              - generic [ref=e339]: 500+
+              - generic [ref=e340]: Properties Managed
+            - group "Client Satisfaction statistic" [ref=e341]:
+              - generic [ref=e346]:
+                - img [ref=e347]
+                - img [ref=e353]
+              - generic [ref=e355]: 4/5
+              - generic [ref=e356]: Client Satisfaction
+      - region "Getting Started is Simple" [ref=e358]:
+        - generic [ref=e361]:
+          - generic [ref=e362]:
+            - heading "Getting Started is Simple" [level=2] [ref=e363]
+            - paragraph [ref=e364]: From initial consultation to your first rent check, we make the onboarding process seamless.
+          - list [ref=e366]:
+            - listitem [ref=e367]:
+              - img [ref=e369]
+              - heading "Free Rental Analysis" [level=3] [ref=e371]
+              - paragraph [ref=e372]: Schedule a consultation to discuss your property and investment goals. We'll provide a comprehensive rental market analysis at no cost.
+            - listitem [ref=e373]:
+              - img [ref=e375]
+              - heading "Property Inspection" [level=3] [ref=e378]
+              - paragraph [ref=e379]: Our team conducts a thorough inspection to assess condition, identify any needed repairs, and determine optimal rental pricing.
+            - listitem [ref=e380]:
+              - img [ref=e382]
+              - heading "Marketing & Leasing" [level=3] [ref=e384]
+              - paragraph [ref=e385]: We create professional listings, coordinate showings, screen applicants, and secure qualified tenants quickly.
+            - listitem [ref=e386]:
+              - img [ref=e388]
+              - heading "Ongoing Management" [level=3] [ref=e391]
+              - paragraph [ref=e392]: Sit back and relax while we handle rent collection, maintenance, inspections, and everything else.
+      - generic [ref=e394]:
+        - generic [ref=e395]:
+          - heading "What Property Owners Say" [level=2] [ref=e396]
+          - paragraph [ref=e397]: Join hundreds of satisfied property owners who have discovered stress-free property management.
+        - generic [ref=e398]:
+          - generic [ref=e399]:
+            - generic [ref=e400]:
+              - img [ref=e401]
+              - img [ref=e403]
+              - img [ref=e405]
+              - img [ref=e407]
+              - img [ref=e409]
+            - blockquote [ref=e411]: “I have worked with three different property management companies over the years, and Allay is by far the best. Their tenant screening process is thorough, maintenance costs are reasonable, and I have had zero rent payment issues.”
+            - generic [ref=e413]:
+              - generic [ref=e414]: Robert Anderson
+              - generic [ref=e415]:
+                - generic [ref=e416]: Roswell
+                - generic [ref=e417]: •
+                - generic [ref=e418]: single family
+              - generic [ref=e419]: 3 properties
+          - generic [ref=e420]:
+            - generic [ref=e421]:
+              - img [ref=e422]
+              - img [ref=e424]
+              - img [ref=e426]
+              - img [ref=e428]
+              - img [ref=e430]
+            - blockquote [ref=e432]: “The transparency and communication from Allay is unmatched. I get detailed monthly reports, they respond to my questions within hours, and my properties have stayed occupied with minimal turnover. Highly recommend!”
+            - generic [ref=e434]:
+              - generic [ref=e435]: Emily Rodriguez
+              - generic [ref=e436]:
+                - generic [ref=e437]: Sandy Springs
+                - generic [ref=e438]: •
+                - generic [ref=e439]: condo
+              - generic [ref=e440]: 2 properties
+          - generic [ref=e441]:
+            - generic [ref=e442]:
+              - img [ref=e443]
+              - img [ref=e445]
+              - img [ref=e447]
+              - img [ref=e449]
+              - img [ref=e451]
+            - blockquote [ref=e453]: “As an out-of-state investor, I needed a management company I could trust completely. Allay has managed my Atlanta properties for over five years, and I have never had a single issue. They are responsive, professional, and deliver consistent results.”
+            - generic [ref=e455]:
+              - generic [ref=e456]: David Martinez
+              - generic [ref=e457]:
+                - generic [ref=e458]: Decatur
+                - generic [ref=e459]: •
+                - generic [ref=e460]: single family
+              - generic [ref=e461]: 4 properties
+          - generic [ref=e462]:
+            - generic [ref=e463]:
+              - img [ref=e464]
+              - img [ref=e466]
+              - img [ref=e468]
+              - img [ref=e470]
+              - img [ref=e472]
+            - blockquote [ref=e474]: “I was nervous about hiring a property manager, but Allay exceeded all expectations. They found an excellent tenant within days, coordinate all maintenance seamlessly, and I actually make more money than when I self-managed.”
+            - generic [ref=e476]:
+              - generic [ref=e477]: Jessica Williams
+              - generic [ref=e478]:
+                - generic [ref=e479]: Virginia-Highland
+                - generic [ref=e480]: •
+                - generic [ref=e481]: townhome
+          - generic [ref=e482]:
+            - generic [ref=e483]:
+              - img [ref=e484]
+              - img [ref=e486]
+              - img [ref=e488]
+              - img [ref=e490]
+              - img [ref=e492]
+            - blockquote [ref=e494]: “After years of managing my condos myself, Allay has been a game-changer. They filled my vacancies in under two weeks, handle maintenance efficiently, and the monthly reports are crystal clear. Worth every penny.”
+            - generic [ref=e496]:
+              - generic [ref=e497]: Michael Chen
+              - generic [ref=e498]:
+                - generic [ref=e499]: Midtown
+                - generic [ref=e500]: •
+                - generic [ref=e501]: condo
+              - generic [ref=e502]: 3 properties
+          - generic [ref=e503]:
+            - generic [ref=e504]:
+              - img [ref=e505]
+              - img [ref=e507]
+              - img [ref=e509]
+              - img [ref=e511]
+              - img [ref=e513]
+            - blockquote [ref=e515]: “Switching to Allay was the best decision I made for my rental properties. They handle everything professionally, communicate clearly, and my properties stay rented with great tenants. I actually sleep well at night now!”
+            - generic [ref=e517]:
+              - generic [ref=e518]: Sarah Johnson
+              - generic [ref=e519]:
+                - generic [ref=e520]: Buckhead
+                - generic [ref=e521]: •
+                - generic [ref=e522]: single family
+              - generic [ref=e523]: 2 properties
+      - generic [ref=e525]:
+        - generic [ref=e526]:
+          - heading "Simple, Transparent Pricing" [level=2] [ref=e527]
+          - paragraph [ref=e528]: No hidden fees. No surprises. Just great service at a fair price.
+        - generic [ref=e529]:
+          - generic [ref=e530]:
+            - generic [ref=e531]:
+              - heading "Tenant Placement" [level=3] [ref=e532]
+              - paragraph [ref=e533]: One-time fee for professional tenant placement services.
+              - generic [ref=e534]:
+                - generic [ref=e535]: 50%
+                - generic [ref=e536]: of first month's rent
+            - list [ref=e537]:
+              - listitem [ref=e538]:
+                - img [ref=e539]
+                - generic [ref=e541]: Professional marketing & photography
+              - listitem [ref=e542]:
+                - img [ref=e543]
+                - generic [ref=e545]: Unlimited showings
+              - listitem [ref=e546]:
+                - img [ref=e547]
+                - generic [ref=e549]: Comprehensive tenant screening
+              - listitem [ref=e550]:
+                - img [ref=e551]
+                - generic [ref=e553]: Lease preparation & signing
+              - listitem [ref=e554]:
+                - img [ref=e555]
+                - generic [ref=e557]: 30-day placement guarantee
+              - listitem [ref=e558]:
+                - img [ref=e559]
+                - generic [ref=e562]: Ongoing management
+            - link "Get Started" [ref=e563] [cursor=pointer]:
+              - /url: /contact
+          - generic [ref=e564]:
+            - generic [ref=e565]: Recommended
+            - generic [ref=e566]:
+              - heading "Full Management" [level=3] [ref=e567]
+              - paragraph [ref=e568]: Complete property management with no additional fees.
+              - generic [ref=e569]:
+                - generic [ref=e570]: 8%
+                - generic [ref=e571]: of monthly rent
+            - list [ref=e572]:
+              - listitem [ref=e573]:
+                - img [ref=e574]
+                - generic [ref=e576]: Everything in Tenant Placement
+              - listitem [ref=e577]:
+                - img [ref=e578]
+                - generic [ref=e580]: Monthly rent collection
+              - listitem [ref=e581]:
+                - img [ref=e582]
+                - generic [ref=e584]: Maintenance coordination
+              - listitem [ref=e585]:
+                - img [ref=e586]
+                - generic [ref=e588]: Financial reporting & accounting
+              - listitem [ref=e589]:
+                - img [ref=e590]
+                - generic [ref=e592]: 24/7 emergency support
+              - listitem [ref=e593]:
+                - img [ref=e594]
+                - generic [ref=e596]: Property inspections
+              - listitem [ref=e597]:
+                - img [ref=e598]
+                - generic [ref=e600]: Lease renewals
+              - listitem [ref=e601]:
+                - img [ref=e602]
+                - generic [ref=e604]: 12-month rent guarantee
+            - link "Get Started" [ref=e605] [cursor=pointer]:
+              - /url: /contact
+      - region "Frequently Asked Questions" [ref=e607]:
+        - generic [ref=e608]:
+          - generic [ref=e609]:
+            - heading "Frequently Asked Questions" [level=2] [ref=e610]
+            - paragraph [ref=e611]: Get answers to common questions about our property management services.
+          - generic [ref=e612]:
+            - generic [ref=e613]:
+              - heading "What is included in your 8% management fee?" [level=3] [ref=e614]:
+                - button "What is included in your 8% management fee?" [expanded] [ref=e615] [cursor=pointer]:
+                  - text: What is included in your 8% management fee?
+                  - img [ref=e616] [cursor=pointer]
+              - region "What is included in your 8% management fee?" [ref=e618]:
+                - paragraph [ref=e621]: "Our 8% fee covers everything: tenant placement, rent collection, maintenance coordination, monthly financial reports, lease enforcement, property inspections, 24/7 emergency support, and our 12-month rent guarantee. There are no hidden fees or additional charges."
+            - heading "How quickly can you find a tenant for my property?" [level=3] [ref=e623]:
+              - button "How quickly can you find a tenant for my property?" [ref=e624] [cursor=pointer]:
+                - text: How quickly can you find a tenant for my property?
+                - img [ref=e625] [cursor=pointer]
+            - heading "What is your tenant screening process?" [level=3] [ref=e628]:
+              - button "What is your tenant screening process?" [ref=e629] [cursor=pointer]:
+                - text: What is your tenant screening process?
+                - img [ref=e630] [cursor=pointer]
+            - heading "How does the 12-month rent guarantee work?" [level=3] [ref=e633]:
+              - button "How does the 12-month rent guarantee work?" [ref=e634] [cursor=pointer]:
+                - text: How does the 12-month rent guarantee work?
+                - img [ref=e635] [cursor=pointer]
+            - heading "Who handles maintenance requests?" [level=3] [ref=e638]:
+              - button "Who handles maintenance requests?" [ref=e639] [cursor=pointer]:
+                - text: Who handles maintenance requests?
+                - img [ref=e640] [cursor=pointer]
+            - heading "Can I use my own contractors for repairs?" [level=3] [ref=e643]:
+              - button "Can I use my own contractors for repairs?" [ref=e644] [cursor=pointer]:
+                - text: Can I use my own contractors for repairs?
+                - img [ref=e645] [cursor=pointer]
+      - generic [ref=e650]:
+        - heading "Ready to Maximize Your Rental Income?" [level=2] [ref=e651]
+        - paragraph [ref=e652]: Get a free rental analysis and discover how much more you could be earning with professional property management.
+        - generic [ref=e653]:
+          - link "Get Free Analysis" [ref=e654] [cursor=pointer]:
+            - /url: /contact
+          - link "Call (404) 555-0100" [ref=e655] [cursor=pointer]:
+            - /url: tel:+14045550100
+  - contentinfo [ref=e656]:
+    - generic [ref=e657]:
+      - link "Payload Logo" [ref=e658] [cursor=pointer]:
+        - /url: /
+        - img "Payload Logo" [ref=e659] [cursor=pointer]
+      - generic [ref=e660]:
+        - combobox "Select a theme" [ref=e661] [cursor=pointer]:
+          - generic: Auto
+          - img [ref=e662] [cursor=pointer]
+        - navigation [ref=e664]:
+          - link "Admin" [ref=e665] [cursor=pointer]:
+            - /url: /admin
+          - link "Source Code" [ref=e666] [cursor=pointer]:
+            - /url: https://github.com/payloadcms/payload/tree/main/templates/website
+          - link "Payload" [ref=e667] [cursor=pointer]:
+            - /url: https://payloadcms.com/
+  - status [ref=e668]:
+    - generic [ref=e669]:
+      - img [ref=e671]
+      - generic [ref=e673]:
+        - text: Static route
+        - button "Hide static indicator" [ref=e674] [cursor=pointer]:
+          - img [ref=e675] [cursor=pointer]
+  - alert [ref=e678]
+```

@@ -15,6 +15,9 @@ import { HeroCTA } from '../../blocks/HeroCTA/config'
 import { Statistics } from '../../blocks/Statistics/config'
 import { FAQAccordion } from '../../blocks/FAQAccordion/config'
 import { ProcessTimeline } from '../../blocks/ProcessTimeline/config'
+import { TeamGridBlock } from '../../blocks/TeamGrid/config'
+import { TrustBadgesBlock } from '../../blocks/TrustBadges/config'
+import { HTMLEmbed } from '../../blocks/HTMLEmbed/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -99,6 +102,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 Statistics,
                 FAQAccordion,
                 ProcessTimeline,
+                TeamGridBlock,
+                TrustBadgesBlock,
+                HTMLEmbed,
               ],
               required: true,
             },

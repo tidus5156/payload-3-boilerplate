@@ -1,0 +1,196 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e5]:
+      - link "Payload Logo" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "Payload Logo" [ref=e7] [cursor=pointer]
+      - navigation "Desktop navigation" [ref=e9]:
+        - button "Services" [ref=e11] [cursor=pointer]:
+          - text: Services
+          - img [ref=e12] [cursor=pointer]
+        - button "Property Owners" [ref=e15] [cursor=pointer]:
+          - text: Property Owners
+          - img [ref=e16] [cursor=pointer]
+        - button "Residents" [ref=e19] [cursor=pointer]:
+          - text: Residents
+          - img [ref=e20] [cursor=pointer]
+        - link "About" [ref=e22] [cursor=pointer]:
+          - /url: /about
+        - link "Resources" [ref=e23] [cursor=pointer]:
+          - /url: /resources
+        - link "Contact" [ref=e24] [cursor=pointer]:
+          - /url: /contact
+        - link "Search" [ref=e25] [cursor=pointer]:
+          - /url: /search
+          - generic [ref=e26] [cursor=pointer]: Search
+          - img [ref=e27] [cursor=pointer]
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e34]:
+        - heading "Resident FAQs" [level=1] [ref=e35]
+        - paragraph [ref=e36]: Common questions about renting with Allay Property Management
+        - generic [ref=e37]:
+          - link "Search Properties" [ref=e38] [cursor=pointer]:
+            - /url: /properties
+          - link "Apply Online" [ref=e39] [cursor=pointer]:
+            - /url: /residents/apply
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - heading "Leasing & Applications" [level=2] [ref=e44]
+          - generic [ref=e45]:
+            - group [ref=e46]:
+              - generic "How quickly can you find a tenant for my property?" [ref=e47] [cursor=pointer]:
+                - heading "How quickly can you find a tenant for my property?" [level=3] [ref=e48] [cursor=pointer]
+                - img [ref=e49] [cursor=pointer]
+            - group [ref=e51]:
+              - generic "What is your tenant screening process?" [ref=e52] [cursor=pointer]:
+                - heading "What is your tenant screening process?" [level=3] [ref=e53] [cursor=pointer]
+                - img [ref=e54] [cursor=pointer]
+            - group [ref=e56]:
+              - generic "How quickly can you find a tenant for my property?" [ref=e57] [cursor=pointer]:
+                - heading "How quickly can you find a tenant for my property?" [level=3] [ref=e58] [cursor=pointer]
+                - img [ref=e59] [cursor=pointer]
+            - group [ref=e61]:
+              - generic "What is your tenant screening process?" [ref=e62] [cursor=pointer]:
+                - heading "What is your tenant screening process?" [level=3] [ref=e63] [cursor=pointer]
+                - img [ref=e64] [cursor=pointer]
+            - group [ref=e66]:
+              - generic "How quickly can you find a tenant for my property?" [ref=e67] [cursor=pointer]:
+                - heading "How quickly can you find a tenant for my property?" [level=3] [ref=e68] [cursor=pointer]
+                - img [ref=e69] [cursor=pointer]
+            - group [ref=e71]:
+              - generic "What is your tenant screening process?" [ref=e72] [cursor=pointer]:
+                - heading "What is your tenant screening process?" [level=3] [ref=e73] [cursor=pointer]
+                - img [ref=e74] [cursor=pointer]
+            - group [ref=e76]:
+              - generic "How quickly can you find a tenant for my property?" [ref=e77] [cursor=pointer]:
+                - heading "How quickly can you find a tenant for my property?" [level=3] [ref=e78] [cursor=pointer]
+                - img [ref=e79] [cursor=pointer]
+            - group [ref=e81]:
+              - generic "How long does it take to lease my property?" [ref=e82] [cursor=pointer]:
+                - heading "How long does it take to lease my property?" [level=3] [ref=e83] [cursor=pointer]
+                - img [ref=e84] [cursor=pointer]
+            - group [ref=e86]:
+              - generic "What is your tenant screening process?" [ref=e87] [cursor=pointer]:
+                - heading "What is your tenant screening process?" [level=3] [ref=e88] [cursor=pointer]
+                - img [ref=e89] [cursor=pointer]
+            - group [ref=e91]:
+              - generic "How do I apply for a rental property?" [ref=e92] [cursor=pointer]:
+                - heading "How do I apply for a rental property?" [level=3] [ref=e93] [cursor=pointer]
+                - img [ref=e94] [cursor=pointer]
+            - group [ref=e96]:
+              - generic "What are your application requirements?" [ref=e97] [cursor=pointer]:
+                - heading "What are your application requirements?" [level=3] [ref=e98] [cursor=pointer]
+                - img [ref=e99] [cursor=pointer]
+            - group [ref=e101]:
+              - generic "Can I have roommates?" [ref=e102] [cursor=pointer]:
+                - heading "Can I have roommates?" [level=3] [ref=e103] [cursor=pointer]
+                - img [ref=e104] [cursor=pointer]
+            - group [ref=e106]:
+              - generic "How do I renew my lease?" [ref=e107] [cursor=pointer]:
+                - heading "How do I renew my lease?" [level=3] [ref=e108] [cursor=pointer]
+                - img [ref=e109] [cursor=pointer]
+        - generic [ref=e111]:
+          - heading "Maintenance & Repairs" [level=2] [ref=e112]
+          - generic [ref=e113]:
+            - group [ref=e114]:
+              - generic "Who handles maintenance requests?" [ref=e115] [cursor=pointer]:
+                - heading "Who handles maintenance requests?" [level=3] [ref=e116] [cursor=pointer]
+                - img [ref=e117] [cursor=pointer]
+            - group [ref=e119]:
+              - generic "Can I use my own contractors for repairs?" [ref=e120] [cursor=pointer]:
+                - heading "Can I use my own contractors for repairs?" [level=3] [ref=e121] [cursor=pointer]
+                - img [ref=e122] [cursor=pointer]
+            - group [ref=e124]:
+              - generic "Who handles maintenance requests?" [ref=e125] [cursor=pointer]:
+                - heading "Who handles maintenance requests?" [level=3] [ref=e126] [cursor=pointer]
+                - img [ref=e127] [cursor=pointer]
+            - group [ref=e129]:
+              - generic "Can I use my own contractors for repairs?" [ref=e130] [cursor=pointer]:
+                - heading "Can I use my own contractors for repairs?" [level=3] [ref=e131] [cursor=pointer]
+                - img [ref=e132] [cursor=pointer]
+            - group [ref=e134]:
+              - generic "Who handles maintenance requests?" [ref=e135] [cursor=pointer]:
+                - heading "Who handles maintenance requests?" [level=3] [ref=e136] [cursor=pointer]
+                - img [ref=e137] [cursor=pointer]
+            - group [ref=e139]:
+              - generic "Can I use my own contractors for repairs?" [ref=e140] [cursor=pointer]:
+                - heading "Can I use my own contractors for repairs?" [level=3] [ref=e141] [cursor=pointer]
+                - img [ref=e142] [cursor=pointer]
+            - group [ref=e144]:
+              - generic "Who handles maintenance requests?" [ref=e145] [cursor=pointer]:
+                - heading "Who handles maintenance requests?" [level=3] [ref=e146] [cursor=pointer]
+                - img [ref=e147] [cursor=pointer]
+            - group [ref=e149]:
+              - generic "Can I use my own contractors for repairs?" [ref=e150] [cursor=pointer]:
+                - heading "Can I use my own contractors for repairs?" [level=3] [ref=e151] [cursor=pointer]
+                - img [ref=e152] [cursor=pointer]
+            - group [ref=e154]:
+              - generic "What if my tenant damages the property?" [ref=e155] [cursor=pointer]:
+                - heading "What if my tenant damages the property?" [level=3] [ref=e156] [cursor=pointer]
+                - img [ref=e157] [cursor=pointer]
+            - group [ref=e159]:
+              - generic "Do you handle emergency maintenance calls?" [ref=e160] [cursor=pointer]:
+                - heading "Do you handle emergency maintenance calls?" [level=3] [ref=e161] [cursor=pointer]
+                - img [ref=e162] [cursor=pointer]
+            - group [ref=e164]:
+              - generic "How do I submit a maintenance request?" [ref=e165] [cursor=pointer]:
+                - heading "How do I submit a maintenance request?" [level=3] [ref=e166] [cursor=pointer]
+                - img [ref=e167] [cursor=pointer]
+        - generic [ref=e169]:
+          - heading "Lease & Legal" [level=2] [ref=e170]
+          - generic [ref=e171]:
+            - group [ref=e172]:
+              - generic "What happens if my tenant breaks the lease early?" [ref=e173] [cursor=pointer]:
+                - heading "What happens if my tenant breaks the lease early?" [level=3] [ref=e174] [cursor=pointer]
+                - img [ref=e175] [cursor=pointer]
+            - group [ref=e177]:
+              - generic "Do I need renters insurance?" [ref=e178] [cursor=pointer]:
+                - heading "Do I need renters insurance?" [level=3] [ref=e179] [cursor=pointer]
+                - img [ref=e180] [cursor=pointer]
+            - group [ref=e182]:
+              - generic "What if I need to break my lease early?" [ref=e183] [cursor=pointer]:
+                - heading "What if I need to break my lease early?" [level=3] [ref=e184] [cursor=pointer]
+                - img [ref=e185] [cursor=pointer]
+            - group [ref=e187]:
+              - generic "How do I get my security deposit back?" [ref=e188] [cursor=pointer]:
+                - heading "How do I get my security deposit back?" [level=3] [ref=e189] [cursor=pointer]
+                - img [ref=e190] [cursor=pointer]
+      - generic [ref=e194]:
+        - heading "Ready to Find Your Next Home?" [level=2] [ref=e195]
+        - paragraph [ref=e196]: Browse our available properties or contact us to learn more about renting with Allay Property Management.
+        - generic [ref=e197]:
+          - link "View Properties" [ref=e198] [cursor=pointer]:
+            - /url: /properties
+          - link "Resident Portal Login" [ref=e199] [cursor=pointer]:
+            - /url: https://app.tenantcloud.com
+  - contentinfo [ref=e200]:
+    - generic [ref=e201]:
+      - link "Payload Logo" [ref=e202] [cursor=pointer]:
+        - /url: /
+        - img "Payload Logo" [ref=e203] [cursor=pointer]
+      - generic [ref=e204]:
+        - combobox "Select a theme" [ref=e205] [cursor=pointer]:
+          - generic: Auto
+          - img [ref=e206] [cursor=pointer]
+        - navigation [ref=e208]:
+          - link "Admin" [ref=e209] [cursor=pointer]:
+            - /url: /admin
+          - link "Source Code" [ref=e210] [cursor=pointer]:
+            - /url: https://github.com/payloadcms/payload/tree/main/templates/website
+          - link "Payload" [ref=e211] [cursor=pointer]:
+            - /url: https://payloadcms.com/
+  - status [ref=e212]:
+    - generic [ref=e213]:
+      - img [ref=e215]
+      - generic [ref=e217]:
+        - text: Static route
+        - button "Hide static indicator" [ref=e218] [cursor=pointer]:
+          - img [ref=e219] [cursor=pointer]
+  - alert [ref=e222]
+```

@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import type { ServicesGridBlock as ServicesGridBlockType } from '@/payload-types'
 import { Button } from '@/components/ui/button'
@@ -118,19 +120,13 @@ export const ServicesGridBlock: React.FC<ServicesGridBlockType> = ({
                     {service.ctaText && service.ctaUrl && (
                       <Link href={service.ctaUrl} className="mt-auto">
                         <Button
-                          variant={isPopular ? "default" : "outline"}
-                          className={cn(
-                            "w-full group/btn relative overflow-hidden",
-                            isPopular && "bg-gradient-gold hover:shadow-glow-gold"
-                          )}
+                          variant={isPopular ? "primary" : "outline"}
+                          className="w-full group/btn"
                         >
-                          <span className="relative z-10 flex items-center justify-center gap-2">
+                          <span className="flex items-center justify-center gap-2">
                             {service.ctaText}
                             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                           </span>
-                          {isPopular && (
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700" />
-                          )}
                         </Button>
                       </Link>
                     )}

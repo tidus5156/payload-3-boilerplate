@@ -16,6 +16,9 @@ import { HeroCTABlock } from '@/blocks/HeroCTA/Component'
 import { StatisticsBlock } from '@/blocks/Statistics/Component'
 import { FAQAccordionBlock } from '@/blocks/FAQAccordion/Component'
 import { ProcessTimelineBlock } from '@/blocks/ProcessTimeline/Component'
+import { TeamGridBlock } from '@/blocks/TeamGrid/Component'
+import { TrustBadgesBlock } from '@/blocks/TrustBadges/Component'
+import { HTMLEmbedBlock } from '@/blocks/HTMLEmbed/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -31,6 +34,9 @@ const blockComponents = {
   statistics: StatisticsBlock,
   faqAccordion: FAQAccordionBlock,
   processTimeline: ProcessTimelineBlock,
+  teamGrid: TeamGridBlock,
+  trustBadges: TrustBadgesBlock,
+  htmlEmbed: HTMLEmbedBlock,
 }
 
 export const RenderBlocks: React.FC<{

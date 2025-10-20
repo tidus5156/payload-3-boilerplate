@@ -16,6 +16,15 @@ export const Settings: GlobalConfig = {
           label: 'General',
           fields: [
             {
+              name: 'logo',
+              type: 'upload',
+              relationTo: 'media',
+              required: false,
+              admin: {
+                description: 'Primary logo for header and footer (recommended: SVG or PNG with transparent background)',
+              },
+            },
+            {
               name: 'siteName',
               type: 'text',
               required: true,
@@ -100,6 +109,29 @@ export const Settings: GlobalConfig = {
                   },
                 },
               ],
+            },
+          ],
+        },
+        {
+          label: 'Portals',
+          fields: [
+            {
+              name: 'ownerPortalUrl',
+              type: 'text',
+              label: 'Owner Portal URL',
+              admin: {
+                placeholder: 'https://owners.allaypm.com',
+                description: 'URL for property owners to log in and access their portal',
+              },
+            },
+            {
+              name: 'residentPortalUrl',
+              type: 'text',
+              label: 'Resident Portal URL',
+              admin: {
+                placeholder: 'https://residents.allaypm.com',
+                description: 'URL for residents to log in and access their portal',
+              },
             },
           ],
         },
