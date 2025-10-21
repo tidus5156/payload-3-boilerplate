@@ -23,10 +23,10 @@ export async function GET(request: Request) {
       slug: 'settings',
     })
 
-    if (existingSettings?.companyName) {
+    if (existingSettings?.siteName) {
       return NextResponse.json({
         message: 'Database already seeded. Settings global already exists.',
-        data: { companyName: existingSettings.companyName },
+        data: { siteName: existingSettings.siteName },
       })
     }
 
