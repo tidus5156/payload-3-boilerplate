@@ -10,16 +10,21 @@ interface NeighborhoodPageProps {
 }
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config })
+  try {
+    const payload = await getPayload({ config })
 
-  const neighborhoods = await payload.find({
-    collection: 'neighborhoods',
-    limit: 1000,
-  })
+    const neighborhoods = await payload.find({
+      collection: 'neighborhoods',
+      limit: 1000,
+    })
 
-  return neighborhoods.docs.map((neighborhood) => ({
-    slug: neighborhood.slug,
-  }))
+    return neighborhoods.docs.map((neighborhood) => ({
+      slug: neighborhood.slug,
+    }))
+  } catch (error) {
+    console.warn('Could not generate static params for neighborhoods:', error)
+    return []
+  }
 }
 
 export async function generateMetadata({ params }: NeighborhoodPageProps): Promise<Metadata> {

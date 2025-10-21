@@ -16,22 +16,29 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const services = await payload.find({
-    collection: 'services',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    select: {
-      slug: true,
-    },
-  })
+  try {
+    const payload = await getPayload({ config: configPromise })
+    const services = await payload.find({
+      collection: 'services',
+      draft: false,
+      limit: 1000,
+      overrideAccess: false,
+      select: {
+        slug: true,
+      },
+    })
 
-  const params = services.docs.map(({ slug }) => {
-    return { slug }
-  })
+    const params = services.docs.map(({ slug }) => {
+      return { slug }
+    })
 
-  return params
+    return params
+  } catch (error) {
+    // During build, the services table might not exist yet
+    // Return empty array to allow build to proceed
+    console.warn('Could not generate static params for services:', error)
+    return []
+  }
 }
 
 type Args = {
