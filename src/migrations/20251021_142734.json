@@ -1,5 +1,5 @@
 {
-  "id": "087d54d0-0fa1-4e8c-9a20-97dd75fa2563",
+  "id": "7f3990c5-eb67-483a-b939-e17cd2d69fce",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -58,7 +58,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'primary'"
+          "default": "'default'"
         }
       },
       "indexes": {
@@ -257,7 +257,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'primary'"
+          "default": "'default'"
         }
       },
       "indexes": {
@@ -496,7 +496,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'primary'"
+          "default": "'default'"
         }
       },
       "indexes": {
@@ -4099,7 +4099,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'primary'"
+          "default": "'default'"
         },
         "_uuid": {
           "name": "_uuid",
@@ -4310,7 +4310,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'primary'"
+          "default": "'default'"
         },
         "_uuid": {
           "name": "_uuid",
@@ -4561,7 +4561,7 @@
           "typeSchema": "public",
           "primaryKey": false,
           "notNull": false,
-          "default": "'primary'"
+          "default": "'default'"
         },
         "_uuid": {
           "name": "_uuid",

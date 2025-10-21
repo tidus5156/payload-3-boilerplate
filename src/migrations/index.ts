@@ -3,6 +3,7 @@ import * as migration_20241214_124128 from './20241214_124128';
 import * as migration_20251014_203127 from './20251014_203127';
 import * as migration_20251014_225257_custom_blocks from './20251014_225257_custom_blocks';
 import * as migration_20251016_143535_hero_trust_indicators from './20251016_143535_hero_trust_indicators';
+import * as migration_20251021_142734 from './20251021_142734';
 
 export const migrations = [
   {
@@ -29,5 +30,10 @@ export const migrations = [
     up: migration_20251016_143535_hero_trust_indicators.up,
     down: migration_20251016_143535_hero_trust_indicators.down,
     name: '20251016_143535_hero_trust_indicators',
+  },
+  {
+    up: migration_20251021_142734.up,
+    down: migration_20251021_142734.down,
+    name: '20251021_142734'
   },
 ];
