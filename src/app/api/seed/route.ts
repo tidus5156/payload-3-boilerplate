@@ -30,49 +30,122 @@ export async function GET(request: Request) {
       })
     }
 
-    // Import and run seed data
-    const { seedSettings } = await import('@/seed/settings')
-    const { seedTeamMembers } = await import('@/seed/team')
-    const { seedTestimonials } = await import('@/seed/testimonials')
-    const { seedNeighborhoods } = await import('@/seed/neighborhoods')
-    const { seedFAQs } = await import('@/seed/faqs')
-    const { seedHomepage } = await import('@/seed/pages/homepage')
-    const { seedHeader } = await import('@/seed/header')
+    // Import seed data
+    const { settingsData } = await import('@/seed/settings')
+    const { teamMembersData } = await import('@/seed/team')
+    const { testimonialsData } = await import('@/seed/testimonials')
+    const { allNeighborhoodsData } = await import('@/seed/neighborhoods')
+    const { faqsData } = await import('@/seed/faqs')
+    const { homepageData } = await import('@/seed/pages/homepage')
+    const { headerData } = await import('@/seed/header')
 
-    // Seed in order
-    console.log('🌱 Seeding Settings...')
-    await seedSettings(payload)
+    const results = {
+      settings: false,
+      teamMembers: 0,
+      testimonials: 0,
+      neighborhoods: 0,
+      faqs: 0,
+      homepage: false,
+      header: false,
+    }
 
-    console.log('🌱 Seeding Team Members...')
-    await seedTeamMembers(payload)
+    // 1. Seed Settings
+    try {
+      await payload.updateGlobal({
+        slug: 'settings',
+        data: settingsData,
+      })
+      results.settings = true
+    } catch (error) {
+      console.error('Error seeding settings:', error)
+    }
 
-    console.log('🌱 Seeding Testimonials...')
-    await seedTestimonials(payload)
+    // 2. Seed Team Members
+    for (const member of teamMembersData) {
+      try {
+        await payload.create({
+          collection: 'team-members',
+          data: member as any,
+        })
+        results.teamMembers++
+      } catch (error) {
+        console.error('Error creating team member:', error)
+      }
+    }
 
-    console.log('🌱 Seeding Neighborhoods...')
-    await seedNeighborhoods(payload)
+    // 3. Seed Testimonials
+    for (const testimonial of testimonialsData) {
+      try {
+        await payload.create({
+          collection: 'testimonials',
+          data: testimonial as any,
+        })
+        results.testimonials++
+      } catch (error) {
+        console.error('Error creating testimonial:', error)
+      }
+    }
 
-    console.log('🌱 Seeding FAQs...')
-    await seedFAQs(payload)
+    // 4. Seed Neighborhoods
+    for (const neighborhood of allNeighborhoodsData) {
+      try {
+        await payload.create({
+          collection: 'neighborhoods',
+          data: neighborhood as any,
+        })
+        results.neighborhoods++
+      } catch (error) {
+        console.error('Error creating neighborhood:', error)
+      }
+    }
 
-    console.log('🌱 Seeding Homepage...')
-    await seedHomepage(payload)
+    // 5. Seed FAQs
+    for (const faq of faqsData) {
+      try {
+        await payload.create({
+          collection: 'faqs',
+          data: faq as any,
+        })
+        results.faqs++
+      } catch (error) {
+        console.error('Error creating FAQ:', error)
+      }
+    }
 
-    console.log('🌱 Seeding Header...')
-    await seedHeader(payload)
+    // 6. Seed Homepage
+    try {
+      await payload.create({
+        collection: 'pages',
+        data: homepageData as any,
+      })
+      results.homepage = true
+    } catch (error) {
+      console.error('Error seeding homepage:', error)
+    }
+
+    // 7. Seed Header
+    try {
+      await payload.updateGlobal({
+        slug: 'header',
+        data: headerData,
+      })
+      results.header = true
+    } catch (error) {
+      console.error('Error seeding header:', error)
+    }
 
     return NextResponse.json({
       success: true,
       message: 'Database seeded successfully with Allay Property Management content!',
-      seeded: [
-        'Settings Global',
-        'Team Members',
-        'Testimonials',
-        'Neighborhoods',
-        'FAQs',
-        'Homepage',
-        'Header Navigation',
-      ],
+      results: {
+        settings: results.settings ? '✅' : '❌',
+        teamMembers: `${results.teamMembers} created`,
+        testimonials: `${results.testimonials} created`,
+        neighborhoods: `${results.neighborhoods} created`,
+        faqs: `${results.faqs} created`,
+        homepage: results.homepage ? '✅' : '❌',
+        header: results.header ? '✅' : '❌',
+      },
     })
   } catch (error) {
     console.error('Seed error:', error)
