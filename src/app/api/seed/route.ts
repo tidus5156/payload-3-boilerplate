@@ -127,7 +127,7 @@ export async function GET(request: Request) {
     try {
       await payload.updateGlobal({
         slug: 'header',
-        data: headerData,
+        data: headerData as any,
       })
       results.header = true
     } catch (error) {

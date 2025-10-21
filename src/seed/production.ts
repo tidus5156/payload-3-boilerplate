@@ -151,7 +151,7 @@ const productionSeed = async () => {
     try {
       await payload.updateGlobal({
         slug: 'header',
-        data: headerData,
+        data: headerData as any,
       })
       console.log('✅ Header navigation seeded\n')
     } catch (error) {

@@ -9,7 +9,7 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
       {
         link: {
           type: 'custom',
-          appearance: 'default',
+          appearance: 'primary',
           label: 'All posts',
           url: '/posts',
         },
@@ -568,7 +568,7 @@ export const home: RequiredDataFromCollectionSlug<'pages'> = {
         {
           link: {
             type: 'custom',
-            appearance: 'default',
+            appearance: 'primary',
             label: 'All posts',
             url: '/posts',
           },
