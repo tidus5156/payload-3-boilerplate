@@ -154,6 +154,7 @@ export default async function Service({ params: paramsPromise }: Args) {
 
       {/* CTA Section */}
       <CallToActionBlock
+        blockType="cta"
         links={[
           {
             link: {
