@@ -130,7 +130,7 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('primary' | 'secondary' | 'outline') | null;
+            appearance?: ('primary' | 'secondary' | 'outline' | 'default') | null;
           };
           id?: string | null;
         }[]
@@ -331,7 +331,7 @@ export interface ContentBlock {
           } | null;
           url?: string | null;
           label: string;
-          appearance?: ('primary' | 'secondary' | 'outline') | null;
+          appearance?: ('primary' | 'secondary' | 'outline' | 'default') | null;
         };
         id?: string | null;
       }[]
