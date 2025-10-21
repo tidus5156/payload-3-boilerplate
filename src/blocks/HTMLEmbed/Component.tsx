@@ -13,10 +13,14 @@ export const HTMLEmbedBlock: React.FC<HTMLEmbedBlockProps> = ({
     full: 'w-full',
     container: 'container mx-auto',
     narrow: 'max-w-prose mx-auto',
-  }
+  } as const
+
+  // Handle null/undefined containerMaxWidth
+  const width = containerMaxWidth || 'full'
+  const className = widthClasses[width as keyof typeof widthClasses] || widthClasses.full
 
   return (
-    <div className={widthClasses[containerMaxWidth] || widthClasses.full}>
+    <div className={className}>
       <HTMLEmbedClient embedCode={embedCode} />
     </div>
   )
