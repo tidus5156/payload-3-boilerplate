@@ -27,6 +27,84 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `pnpm ii` or `npm run ii` - Install dependencies (ignores workspace)
 - `pnpm reinstall` or `npm run reinstall` - Clean reinstall (removes node_modules and lockfile)
 
+## Database Deployment Workflow
+
+### Local → Railway Deployment Strategy
+
+This project uses a **local-first development** approach with **manual database sync** to Railway staging:
+
+**Development Environment:**
+- Work locally with PostgreSQL database (Docker)
+- Create and edit content through local admin panel at `http://localhost:3000/admin`
+- Test changes locally before deploying
+
+**Deployment Process:**
+When you run `git push`, a **pre-push hook** will ask if you want to sync your database:
+
+```bash
+git add .
+git commit -m "Your changes"
+git push  # ← Hook will ask: "Sync database? (y/n)"
+```
+
+**What Happens on "Yes":**
+1. Exports local database to `migration-data.json`
+2. Imports content to Railway staging database
+3. Adds `migration-data.json` to your commit
+4. Pushes code to GitHub (triggers Railway rebuild)
+
+**What Happens on "No":**
+1. Skips database sync
+2. Pushes code only (Railway keeps existing content)
+
+**Skip Database Sync Entirely:**
+```bash
+SKIP_DB_SYNC=1 git push  # Pushes code without database sync prompt
+```
+
+### Important Notes
+
+**Code vs. Content Deployment:**
+- **Code changes** (components, migrations, config) → Deploy via `git push`
+- **Database schema** (migrations) → Auto-applied by Railway on deploy
+- **Database content** (pages, posts, media) → Manual sync via pre-push hook
+
+**Why Manual Database Sync?**
+- Prevents accidental overwrites of production data
+- Gives you control over when content deploys
+- Allows testing locally before deploying content
+- Separates code deployments from content deployments
+
+**Backup Safety:**
+- `migration-data.json` is committed to git as a backup
+- Can restore from this file if needed
+- View database state history through git
+
+### Database Sync Scripts
+
+**Manual Export (if needed):**
+```bash
+DATABASE_URI="postgresql://user:password@localhost:5432/allay_pm" \
+  pnpm tsx scripts/export-local-data.ts
+```
+
+**Manual Import to Railway (if needed):**
+```bash
+DATABASE_URI="postgresql://postgres:EfynhftIAjdxTkycIFyMMBUyRpvcFBPv@tramway.proxy.rlwy.net:21914/railway" \
+  PAYLOAD_SECRET="your-secret" \
+  pnpm tsx scripts/import-to-railway.ts
+```
+
+**Import Railway Back to Local:**
+```bash
+# First export from Railway
+DATABASE_URI="railway-connection-string" pnpm tsx scripts/export-local-data.ts
+
+# Then import to local
+DATABASE_URI="postgresql://user:password@localhost:5432/allay_pm" \
+  pnpm tsx scripts/import-to-railway.ts
+```
+
 ## Architecture
 
 ### Next.js App Router Structure

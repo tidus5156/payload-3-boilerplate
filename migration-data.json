@@ -5348,7 +5348,7 @@
                 "newTab": null,
                 "url": "/contact",
                 "label": "Get Custom Quote",
-                "appearance": "primary"
+                "appearance": "default"
               }
             }
           ],
@@ -5862,7 +5862,7 @@
                 "newTab": null,
                 "url": "/contact",
                 "label": "Contact Us",
-                "appearance": "primary"
+                "appearance": "default"
               }
             },
             {
@@ -6415,7 +6415,7 @@
                 "newTab": null,
                 "url": "tel:+14045550123",
                 "label": "Call (404) 555-0123",
-                "appearance": "primary"
+                "appearance": "default"
               }
             },
             {
@@ -6762,7 +6762,7 @@
                 "newTab": null,
                 "url": "/contact",
                 "label": "Get Started",
-                "appearance": "primary"
+                "appearance": "default"
               }
             },
             {
@@ -7032,7 +7032,7 @@
                 "newTab": null,
                 "url": "/contact",
                 "label": "Get Started",
-                "appearance": "primary"
+                "appearance": "default"
               }
             },
             {
@@ -7449,7 +7449,7 @@
                 "newTab": null,
                 "url": "/contact",
                 "label": "Get Free Rental Analysis",
-                "appearance": "primary"
+                "appearance": "default"
               }
             },
             {
@@ -7967,7 +7967,7 @@
                 "newTab": null,
                 "url": "/contact",
                 "label": "Get Free Rental Analysis",
-                "appearance": "primary"
+                "appearance": "default"
               }
             },
             {
@@ -8533,7 +8533,7 @@
                 "newTab": null,
                 "url": "/contact",
                 "label": "Get Free Rental Analysis",
-                "appearance": "primary"
+                "appearance": "default"
               }
             },
             {
@@ -8543,7 +8543,7 @@
                 "newTab": null,
                 "url": "tel:+14045550100",
                 "label": "Call (404) 555-0100",
-                "appearance": "secondary"
+                "appearance": "default"
               }
             }
           ],
@@ -9150,7 +9150,7 @@
                 "newTab": false,
                 "url": "/contact",
                 "label": "Get Free Rental Analysis",
-                "appearance": "primary"
+                "appearance": "default"
               }
             },
             {
@@ -9160,7 +9160,7 @@
                 "newTab": false,
                 "url": "/services",
                 "label": "View Our Services",
-                "appearance": "secondary"
+                "appearance": "default"
               }
             }
           ],
