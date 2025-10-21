@@ -37,6 +37,21 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
      CONSTRAINT "services_benefits_parent_fk" FOREIGN KEY ("_parent_id") REFERENCES "services"("id") ON DELETE CASCADE
    );
 
+   -- Create ENUM type for icon_color
+   DO $$ BEGIN
+     CREATE TYPE enum_pages_blocks_icon_grid_items_icon_color AS ENUM ('skyBlue', 'sageGreen', 'warmGold');
+   EXCEPTION
+     WHEN duplicate_object THEN null;
+   END $$;
+
+   -- Add icon_color column to pages_blocks_icon_grid_items
+   DO $$ BEGIN
+     ALTER TABLE "pages_blocks_icon_grid_items"
+     ADD COLUMN "icon_color" enum_pages_blocks_icon_grid_items_icon_color DEFAULT 'skyBlue';
+   EXCEPTION
+     WHEN duplicate_column THEN null;
+   END $$;
+
    -- Update link appearance defaults
    ALTER TABLE "pages_hero_links" ALTER COLUMN "link_appearance" SET DEFAULT 'default';
    ALTER TABLE "pages_blocks_cta_links" ALTER COLUMN "link_appearance" SET DEFAULT 'default';
