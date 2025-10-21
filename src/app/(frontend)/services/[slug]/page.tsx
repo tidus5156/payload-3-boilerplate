@@ -180,18 +180,24 @@ export default async function Service({ params: paramsPromise }: Args) {
                 type: 'heading',
                 children: [
                   {
+                    type: 'text',
                     text: 'Ready to Get Started?',
+                    version: 1,
                   },
                 ],
                 tag: 'h2',
+                version: 1,
               },
               {
                 type: 'paragraph',
                 children: [
                   {
+                    type: 'text',
                     text: 'Contact us today to learn more about this service and how we can help maximize your property investment.',
+                    version: 1,
                   },
                 ],
+                version: 1,
               },
             ],
             direction: 'ltr',
