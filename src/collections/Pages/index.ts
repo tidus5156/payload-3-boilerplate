@@ -18,6 +18,7 @@ import { ProcessTimeline } from '../../blocks/ProcessTimeline/config'
 import { TeamGridBlock } from '../../blocks/TeamGrid/config'
 import { TrustBadgesBlock } from '../../blocks/TrustBadges/config'
 import { HTMLEmbed } from '../../blocks/HTMLEmbed/config'
+import { DualHero } from '../../blocks/DualHero/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -89,6 +90,7 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               blocks: [
+                DualHero,
                 CallToAction,
                 Content,
                 MediaBlock,

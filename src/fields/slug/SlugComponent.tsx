@@ -29,6 +29,10 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
 
   const { dispatchFields } = useForm()
 
+  // Track the initial slug value when component mounts
+  // This prevents regeneration on existing pages
+  const [initialSlug] = React.useState(value)
+
   // The value of the checkbox
   // We're using separate useFormFields to minimise re-renders
   const checkboxValue = useFormFields(([fields]) => {
@@ -41,7 +45,11 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
   })
 
   useEffect(() => {
-    if (checkboxValue) {
+    // Only auto-generate slug if:
+    // 1. Lock is enabled (checkboxValue = true)
+    // 2. AND there was no initial slug (new document)
+    // This prevents slug regeneration on existing pages
+    if (checkboxValue && !initialSlug) {
       if (targetFieldValue) {
         const formattedSlug = formatSlug(targetFieldValue)
 
@@ -50,7 +58,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
         if (value !== '') setValue('')
       }
     }
-  }, [targetFieldValue, checkboxValue, setValue, value])
+  }, [targetFieldValue, checkboxValue, setValue, value, initialSlug])
 
   const handleLock = useCallback(
     (e) => {

@@ -19,8 +19,10 @@ import { ProcessTimelineBlock } from '@/blocks/ProcessTimeline/Component'
 import { TeamGridBlock } from '@/blocks/TeamGrid/Component'
 import { TrustBadgesBlock } from '@/blocks/TrustBadges/Component'
 import { HTMLEmbedBlock } from '@/blocks/HTMLEmbed/Component'
+import { DualHeroBlock } from '@/blocks/DualHero/Component'
 
 const blockComponents = {
+  dualHero: DualHeroBlock,
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,

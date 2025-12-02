@@ -53,9 +53,33 @@ export const hero: Field = {
       }),
       label: false,
     },
+    {
+      name: 'showCTA',
+      type: 'checkbox',
+      defaultValue: false,
+      label: 'Show Call-to-Action Buttons',
+      admin: {
+        condition: (_, { type } = {}) => type === 'mediumImpact',
+        description: 'Enable CTA buttons for this Medium Impact hero. Most information pages work better without CTAs.',
+      },
+    },
     linkGroup({
+      appearances: ['primary', 'secondary', 'outline'],
+      defaultAppearance: 'primary',
       overrides: {
         maxRows: 2,
+        admin: {
+          condition: (_, siblingData) => {
+            const { type, showCTA } = siblingData || {}
+            // Show for all hero types except mediumImpact
+            // For mediumImpact, only show if showCTA is true
+            if (type === 'mediumImpact') {
+              return showCTA === true
+            }
+            return true
+          },
+          description: 'Hero CTAs default to Primary (Warm Gold) for brand consistency.',
+        },
       },
     }),
     {

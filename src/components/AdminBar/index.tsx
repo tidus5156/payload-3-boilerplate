@@ -46,7 +46,7 @@ export const AdminBar: React.FC<{
 
   return (
     <div
-      className={cn(baseClass, 'py-2 bg-black text-white', {
+      className={cn(baseClass, 'fixed top-0 left-0 right-0 z-[100] py-2 bg-black/90 backdrop-blur-md text-white border-b border-white/10 shadow-lg', {
         block: show,
         hidden: !show,
       })}

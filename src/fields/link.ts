@@ -25,11 +25,12 @@ export const appearanceOptions: Record<LinkAppearances, { label: string; value: 
 
 type LinkType = (options?: {
   appearances?: LinkAppearances[] | false
+  defaultAppearance?: LinkAppearances
   disableLabel?: boolean
   overrides?: Record<string, unknown>
 }) => Field
 
-export const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
+export const link: LinkType = ({ appearances, defaultAppearance = 'default', disableLabel = false, overrides = {} } = {}) => {
   const linkResult: Field = {
     name: 'link',
     type: 'group',
@@ -139,7 +140,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       admin: {
         description: 'Choose how the link should be rendered.',
       },
-      defaultValue: 'default',
+      defaultValue: defaultAppearance,
       options: appearanceOptionsToUse,
     })
   }

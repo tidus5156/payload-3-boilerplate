@@ -20,6 +20,8 @@ import { allNeighborhoodsData } from './neighborhoods'
 import { categoriesData } from './categories'
 import { homepageData } from './pages/homepage'
 import { headerData } from './header'
+import { footerData } from './footer'
+import { servicesData } from './services'
 
 const productionSeed = async () => {
   try {
@@ -133,7 +135,24 @@ const productionSeed = async () => {
     }
     console.log(`✅ ${categories.length} categories seeded\n`)
 
-    // 6. Seed Homepage
+    // 6. Seed Services
+    console.log('🛠️  Seeding Services...')
+    const services: any[] = []
+    for (const service of servicesData) {
+      try {
+        const created = await payload.create({
+          collection: 'services',
+          data: service as any,
+        })
+        services.push(created)
+        console.log(`   - Created: ${service.name}`)
+      } catch (error) {
+        console.error(`   ❌ Error creating ${service.name}:`, error)
+      }
+    }
+    console.log(`✅ ${services.length} services seeded\n`)
+
+    // 7. Seed Homepage
     console.log('🏠 Seeding Homepage...')
     let homepageDoc: any
     try {
@@ -158,6 +177,18 @@ const productionSeed = async () => {
       console.error('❌ Error seeding header navigation:', error)
     }
 
+    // 8. Seed Footer
+    console.log('🦶 Seeding Footer...')
+    try {
+      await payload.updateGlobal({
+        slug: 'footer',
+        data: footerData as any,
+      })
+      console.log('✅ Footer seeded\n')
+    } catch (error) {
+      console.error('❌ Error seeding footer:', error)
+    }
+
     console.log('🎉 Production database seed completed successfully!\n')
     console.log('📊 Summary:')
     console.log(`   - Settings: ✅`)
@@ -165,8 +196,10 @@ const productionSeed = async () => {
     console.log(`   - Testimonials: ${testimonials.length}`)
     console.log(`   - Neighborhoods: ${neighborhoods.length}`)
     console.log(`   - Categories: ${categories.length}`)
+    console.log(`   - Services: ${services.length}`)
     console.log(`   - Pages: 1 (Homepage)`)
     console.log(`   - Header Navigation: ✅`)
+    console.log(`   - Footer: ✅`)
     console.log('\n✨ Your Allay Property Management site is ready for production!')
 
     process.exit(0)

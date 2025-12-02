@@ -119,6 +119,7 @@ export interface Page {
       };
       [k: string]: unknown;
     } | null;
+    showCTA?: boolean | null;
     links?:
       | {
           link: {
@@ -130,7 +131,7 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('primary' | 'secondary' | 'outline' | 'default') | null;
+            appearance?: ('primary' | 'secondary' | 'outline') | null;
           };
           id?: string | null;
         }[]
@@ -145,6 +146,7 @@ export interface Page {
       | null;
   };
   layout: (
+    | DualHeroBlock
     | CallToActionBlock
     | ContentBlock
     | MediaBlock
@@ -260,6 +262,61 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DualHeroBlock".
+ */
+export interface DualHeroBlock {
+  leftPanel: {
+    headline: string;
+    subheadline?: string | null;
+    backgroundImage: number | Media;
+    overlayColor?: ('deepNavy' | 'skyBlue' | 'darkGray') | null;
+    overlayOpacity?: number | null;
+    primaryCTA: {
+      text: string;
+      url: string;
+      openInNewTab?: boolean | null;
+    };
+    secondaryCTA?: {
+      text?: string | null;
+      url?: string | null;
+      openInNewTab?: boolean | null;
+    };
+    trustIndicators?:
+      | {
+          icon: 'star' | 'home' | 'shield' | 'check' | 'users' | 'trending';
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  rightPanel: {
+    headline: string;
+    subheadline?: string | null;
+    backgroundImage: number | Media;
+    overlayColor?: ('sageGreen' | 'skyBlue' | 'warmGray') | null;
+    overlayOpacity?: number | null;
+    primaryCTA: {
+      text: string;
+      url: string;
+      openInNewTab?: boolean | null;
+    };
+    subtext?: string | null;
+  };
+  mobileLabels?: {
+    ownerLabel?: string | null;
+    residentLabel?: string | null;
+  };
+  desktopSplit?: ('60-40' | '50-50' | '65-35' | '70-30') | null;
+  minHeight?: ('70vh' | '85vh' | '100vh') | null;
+  mobileLayout?: ('stack' | 'stackReverse') | null;
+  showScrollIndicator?: boolean | null;
+  enableParallax?: boolean | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'dualHero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock".
  */
 export interface CallToActionBlock {
@@ -371,14 +428,20 @@ export interface ArchiveBlock {
     [k: string]: unknown;
   } | null;
   populateBy?: ('collection' | 'selection') | null;
-  relationTo?: 'posts' | null;
+  relationTo?: ('posts' | 'properties') | null;
   categories?: (number | Category)[] | null;
   limit?: number | null;
   selectedDocs?:
-    | {
-        relationTo: 'posts';
-        value: number | Post;
-      }[]
+    | (
+        | {
+            relationTo: 'posts';
+            value: number | Post;
+          }
+        | {
+            relationTo: 'properties';
+            value: number | Property;
+          }
+      )[]
     | null;
   id?: string | null;
   blockName?: string | null;
@@ -463,6 +526,139 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "properties".
+ */
+export interface Property {
+  id: number;
+  address: string;
+  neighborhood: number | Neighborhood;
+  propertyType: 'single-family' | 'condo' | 'townhome' | 'multi-family' | 'apartment';
+  status: 'available' | 'pending' | 'leased' | 'maintenance';
+  availableDate: string;
+  rent: number;
+  deposit?: number | null;
+  bedrooms: number;
+  bathrooms: number;
+  squareFeet?: number | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  features?:
+    | {
+        feature: string;
+        id?: string | null;
+      }[]
+    | null;
+  amenities?: {
+    petFriendly?: boolean | null;
+    parking?: ('none' | 'street' | 'driveway' | 'garage-1' | 'garage-2' | 'garage-3plus') | null;
+    laundry?: ('none' | 'in-unit' | 'shared' | 'hookups') | null;
+    cooling?: boolean | null;
+    heating?: boolean | null;
+    yard?: boolean | null;
+    pool?: boolean | null;
+    gym?: boolean | null;
+  };
+  images: {
+    image: number | Media;
+    caption?: string | null;
+    id?: string | null;
+  }[];
+  virtualTourUrl?: string | null;
+  internalNotes?: string | null;
+  ownerContact?: {
+    ownerName?: string | null;
+    ownerEmail?: string | null;
+    ownerPhone?: string | null;
+  };
+  featured?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "neighborhoods".
+ */
+export interface Neighborhood {
+  id: number;
+  name: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  region: 'north' | 'south' | 'east' | 'west' | 'central' | 'perimeter';
+  county?: string | null;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  marketData?: {
+    averageRent1BR?: number | null;
+    averageRent2BR?: number | null;
+    averageRent3BR?: number | null;
+    averageRent4BR?: number | null;
+    averageVacancyRate?: number | null;
+    averageDaysOnMarket?: number | null;
+    propertiesManaged?: number | null;
+  };
+  topSchools?:
+    | {
+        schoolName: string;
+        schoolType?: ('elementary' | 'middle' | 'high' | 'private') | null;
+        rating?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  nearbyAttractions?:
+    | {
+        attraction: string;
+        category?: ('park' | 'shopping' | 'dining' | 'entertainment' | 'transit') | null;
+        id?: string | null;
+      }[]
+    | null;
+  commuteTimes?: {
+    commuteToMidtown?: string | null;
+    commuteToDowntown?: string | null;
+    commuteToAirport?: string | null;
+    commuteToPerimeterMall?: string | null;
+  };
+  martaAccess?: ('none' | 'bus' | 'rail-walk' | 'rail-near') | null;
+  metaDescription?: string | null;
+  featuredImage?: (number | null) | Media;
+  gallery?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  featured?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -692,20 +888,9 @@ export interface IconGridBlock {
 export interface ServicesGridBlock {
   heading?: string | null;
   subheading?: string | null;
-  services: {
-    title: string;
-    description: string;
-    features?:
-      | {
-          feature: string;
-          id?: string | null;
-        }[]
-      | null;
-    icon?: ('home' | 'key' | 'tool' | 'dollar' | 'users' | 'file') | null;
-    ctaText?: string | null;
-    ctaUrl?: string | null;
-    id?: string | null;
-  }[];
+  limit?: number | null;
+  featuredOnly?: boolean | null;
+  ctaText?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'servicesGrid';
@@ -995,139 +1180,6 @@ export interface Comment {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "properties".
- */
-export interface Property {
-  id: number;
-  address: string;
-  neighborhood: number | Neighborhood;
-  propertyType: 'single-family' | 'condo' | 'townhome' | 'multi-family' | 'apartment';
-  status: 'available' | 'pending' | 'leased' | 'maintenance';
-  availableDate: string;
-  rent: number;
-  deposit?: number | null;
-  bedrooms: number;
-  bathrooms: number;
-  squareFeet?: number | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  features?:
-    | {
-        feature: string;
-        id?: string | null;
-      }[]
-    | null;
-  amenities?: {
-    petFriendly?: boolean | null;
-    parking?: ('none' | 'street' | 'driveway' | 'garage-1' | 'garage-2' | 'garage-3plus') | null;
-    laundry?: ('none' | 'in-unit' | 'shared' | 'hookups') | null;
-    cooling?: boolean | null;
-    heating?: boolean | null;
-    yard?: boolean | null;
-    pool?: boolean | null;
-    gym?: boolean | null;
-  };
-  images: {
-    image: number | Media;
-    caption?: string | null;
-    id?: string | null;
-  }[];
-  virtualTourUrl?: string | null;
-  internalNotes?: string | null;
-  ownerContact?: {
-    ownerName?: string | null;
-    ownerEmail?: string | null;
-    ownerPhone?: string | null;
-  };
-  featured?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "neighborhoods".
- */
-export interface Neighborhood {
-  id: number;
-  name: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
-  region: 'north' | 'south' | 'east' | 'west' | 'central' | 'perimeter';
-  county?: string | null;
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  marketData?: {
-    averageRent1BR?: number | null;
-    averageRent2BR?: number | null;
-    averageRent3BR?: number | null;
-    averageRent4BR?: number | null;
-    averageVacancyRate?: number | null;
-    averageDaysOnMarket?: number | null;
-    propertiesManaged?: number | null;
-  };
-  topSchools?:
-    | {
-        schoolName: string;
-        schoolType?: ('elementary' | 'middle' | 'high' | 'private') | null;
-        rating?: number | null;
-        id?: string | null;
-      }[]
-    | null;
-  nearbyAttractions?:
-    | {
-        attraction: string;
-        category?: ('park' | 'shopping' | 'dining' | 'entertainment' | 'transit') | null;
-        id?: string | null;
-      }[]
-    | null;
-  commuteTimes?: {
-    commuteToMidtown?: string | null;
-    commuteToDowntown?: string | null;
-    commuteToAirport?: string | null;
-    commuteToPerimeterMall?: string | null;
-  };
-  martaAccess?: ('none' | 'bus' | 'rail-walk' | 'rail-near') | null;
-  metaDescription?: string | null;
-  featuredImage?: (number | null) | Media;
-  gallery?:
-    | {
-        image: number | Media;
-        caption?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  featured?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services".
  */
 export interface Service {
@@ -1406,6 +1458,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         richText?: T;
+        showCTA?: T;
         links?:
           | T
           | {
@@ -1433,6 +1486,70 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
+        dualHero?:
+          | T
+          | {
+              leftPanel?:
+                | T
+                | {
+                    headline?: T;
+                    subheadline?: T;
+                    backgroundImage?: T;
+                    overlayColor?: T;
+                    overlayOpacity?: T;
+                    primaryCTA?:
+                      | T
+                      | {
+                          text?: T;
+                          url?: T;
+                          openInNewTab?: T;
+                        };
+                    secondaryCTA?:
+                      | T
+                      | {
+                          text?: T;
+                          url?: T;
+                          openInNewTab?: T;
+                        };
+                    trustIndicators?:
+                      | T
+                      | {
+                          icon?: T;
+                          text?: T;
+                          id?: T;
+                        };
+                  };
+              rightPanel?:
+                | T
+                | {
+                    headline?: T;
+                    subheadline?: T;
+                    backgroundImage?: T;
+                    overlayColor?: T;
+                    overlayOpacity?: T;
+                    primaryCTA?:
+                      | T
+                      | {
+                          text?: T;
+                          url?: T;
+                          openInNewTab?: T;
+                        };
+                    subtext?: T;
+                  };
+              mobileLabels?:
+                | T
+                | {
+                    ownerLabel?: T;
+                    residentLabel?: T;
+                  };
+              desktopSplit?: T;
+              minHeight?: T;
+              mobileLayout?: T;
+              showScrollIndicator?: T;
+              enableParallax?: T;
+              id?: T;
+              blockName?: T;
+            };
         cta?:
           | T
           | {
@@ -1530,22 +1647,9 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               heading?: T;
               subheading?: T;
-              services?:
-                | T
-                | {
-                    title?: T;
-                    description?: T;
-                    features?:
-                      | T
-                      | {
-                          feature?: T;
-                          id?: T;
-                        };
-                    icon?: T;
-                    ctaText?: T;
-                    ctaUrl?: T;
-                    id?: T;
-                  };
+              limit?: T;
+              featuredOnly?: T;
+              ctaText?: T;
               id?: T;
               blockName?: T;
             };
@@ -2388,6 +2492,30 @@ export interface Setting {
     licenseNumber?: string | null;
     showRemaxLogo?: boolean | null;
   };
+  colorPalette?: {
+    deepNavy?: string | null;
+    skyBlue?: string | null;
+    warmGold?: string | null;
+    sageGreen?: string | null;
+    charcoal?: string | null;
+    warmGray?: string | null;
+    lightGray?: string | null;
+  };
+  typography?: {
+    headingFont?: ('Montserrat' | 'Poppins' | 'Inter' | 'Roboto') | null;
+    bodyFont?: ('Open Sans' | 'Inter' | 'Roboto' | 'Lato') | null;
+  };
+  heroDefaults?: {
+    highImpactHeight?: ('100vh' | '90vh' | '80vh') | null;
+    mediumImpactHeight?: ('80vh' | '70vh' | '65vh' | '60vh') | null;
+    overlayOpacity?: ('40' | '60' | '80') | null;
+    mediumImpactOverlayOpacity?: ('30' | '45' | '60' | '75') | null;
+  };
+  visualEffects?: {
+    enableGlowEffects?: boolean | null;
+    enableShimmerEffects?: boolean | null;
+    enableSmoothScrolling?: boolean | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2451,6 +2579,7 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  copyrightText?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2498,6 +2627,38 @@ export interface SettingsSelect<T extends boolean = true> {
         brokerName?: T;
         licenseNumber?: T;
         showRemaxLogo?: T;
+      };
+  colorPalette?:
+    | T
+    | {
+        deepNavy?: T;
+        skyBlue?: T;
+        warmGold?: T;
+        sageGreen?: T;
+        charcoal?: T;
+        warmGray?: T;
+        lightGray?: T;
+      };
+  typography?:
+    | T
+    | {
+        headingFont?: T;
+        bodyFont?: T;
+      };
+  heroDefaults?:
+    | T
+    | {
+        highImpactHeight?: T;
+        mediumImpactHeight?: T;
+        overlayOpacity?: T;
+        mediumImpactOverlayOpacity?: T;
+      };
+  visualEffects?:
+    | T
+    | {
+        enableGlowEffects?: T;
+        enableShimmerEffects?: T;
+        enableSmoothScrolling?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -2559,6 +2720,7 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  copyrightText?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

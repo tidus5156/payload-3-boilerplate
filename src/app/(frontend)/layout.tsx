@@ -31,6 +31,7 @@ import { draftMode } from 'next/headers'
 import { SkipToContent } from '@/components/SkipToContent'
 import { StickyCTABar } from '@/components/StickyCTABar'
 import { getCachedGlobal } from '@/utilities/getGlobals'
+import { getDesignTokens, tokensToCSS } from '@/utilities/getDesignTokens'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -38,9 +39,27 @@ import { getServerSideURL } from '@/utilities/getURL'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
   const settings = await getCachedGlobal('settings', 1)()
+  const designTokens = getDesignTokens(settings)
+  const cssVariables = tokensToCSS(designTokens)
 
   return (
-    <html className={cn(montserrat.variable, openSans.variable)} lang="en" suppressHydrationWarning>
+    <html
+      className={cn(montserrat.variable, openSans.variable)}
+      lang="en"
+      suppressHydrationWarning
+      style={{
+        // @ts-ignore - CSS variables as inline style
+        ...Object.fromEntries(
+          cssVariables.split('\n')
+            .map(line => line.trim())
+            .filter(line => line && line.includes(':'))
+            .map(line => {
+              const [key, value] = line.split(':').map(s => s.trim())
+              return [key, value.replace(';', '')]
+            })
+        )
+      }}
+    >
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
@@ -49,11 +68,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className={cn(openSans.className, 'font-body')}>
         <Providers>
           <SkipToContent />
-          <AdminBar
-            adminBarProps={{
-              preview: isEnabled,
-            }}
-          />
           <LivePreviewListener />
 
           <Header />

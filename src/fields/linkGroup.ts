@@ -7,16 +7,18 @@ import { link } from './link'
 
 type LinkGroupType = (options?: {
   appearances?: LinkAppearances[] | false
+  defaultAppearance?: LinkAppearances
   overrides?: Partial<ArrayField>
 }) => Field
 
-export const linkGroup: LinkGroupType = ({ appearances, overrides = {} } = {}) => {
+export const linkGroup: LinkGroupType = ({ appearances, defaultAppearance, overrides = {} } = {}) => {
   const generatedLinkGroup: Field = {
     name: 'links',
     type: 'array',
     fields: [
       link({
         appearances,
+        defaultAppearance,
       }),
     ],
   }

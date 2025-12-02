@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { SearchIcon, ChevronDown } from 'lucide-react'
 import { cn } from '@/utilities/cn'
 
-export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
+export const HeaderNav: React.FC<{ header: HeaderType; isTransparent?: boolean }> = ({ header, isTransparent = false }) => {
   const navItems = header?.navItems || []
   const [openDropdown, setOpenDropdown] = useState<number | null>(null)
   const dropdownRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -51,8 +51,11 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
                   }
                 }}
                 className={cn(
-                  'flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary',
-                  isOpen ? 'text-primary' : 'text-foreground'
+                  'flex items-center gap-1 text-sm font-medium transition-all duration-300',
+                  isTransparent
+                    ? 'text-white hover:text-warmGold'
+                    : 'text-foreground hover:text-primary',
+                  isOpen && (isTransparent ? 'text-warmGold' : 'text-primary')
                 )}
                 aria-expanded={isOpen}
                 aria-haspopup="true"
@@ -94,11 +97,30 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
           )
         }
 
-        return <CMSLink key={i} {...navItem.link} appearance="link" />
+        return (
+          <CMSLink
+            key={i}
+            {...navItem.link}
+            appearance="link"
+            className={cn(
+              "text-sm font-medium transition-all duration-300",
+              isTransparent ? "text-white hover:text-warmGold" : ""
+            )}
+          />
+        )
       })}
-      <Link href="/search" aria-label="Search">
-        <span className="sr-only">Search</span>
-        <SearchIcon className="w-5 text-primary" aria-hidden="true" />
+
+      {/* CTA Button - Get Free Analysis */}
+      <Link
+        href="/contact"
+        className={cn(
+          "px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-105 whitespace-nowrap ml-2",
+          isTransparent
+            ? "bg-warmGold text-deepNavy hover:bg-warmGoldLight hover:shadow-warmGold/50"
+            : "bg-warmGold text-deepNavy hover:bg-warmGoldLight"
+        )}
+      >
+        Get Free Analysis
       </Link>
     </nav>
   )

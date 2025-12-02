@@ -19,6 +19,12 @@ export const Footer: GlobalConfig = {
       ],
       maxRows: 6,
     },
+    {
+      name: 'copyrightText',
+      type: 'text',
+      label: 'Copyright Text',
+      defaultValue: '© 2025 Allay Property Management at RE/MAX Metro Atlanta | Licensed in Georgia',
+    },
   ],
   hooks: {
     afterChange: [revalidateFooter],

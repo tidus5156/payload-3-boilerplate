@@ -7,7 +7,7 @@ import type { Header as HeaderType } from '@/payload-types'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/utilities/cn'
 
-export const MobileNav: React.FC<{ header: HeaderType }> = ({ header }) => {
+export const MobileNav: React.FC<{ header: HeaderType; isTransparent?: boolean }> = ({ header, isTransparent = false }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [expandedItems, setExpandedItems] = useState<number[]>([])
   const navItems = header?.navItems || []
@@ -27,8 +27,9 @@ export const MobileNav: React.FC<{ header: HeaderType }> = ({ header }) => {
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
+        className={cn(isTransparent && !isOpen && "text-white hover:text-white hover:bg-white/10")}
       >
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        {isOpen ? <X className="h-6 w-6" /> : <Menu className={cn("h-6 w-6", isTransparent && "text-white")} />}
       </Button>
 
       {isOpen && (

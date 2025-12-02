@@ -17,14 +17,15 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
 
   return (
     <div
-      className="relative -mt-[10.4rem] flex items-center justify-center text-white overflow-hidden"
+      className="relative -mt-20 flex items-center justify-center text-white overflow-hidden"
       data-theme="dark"
       style={{
+        minHeight: 'calc(var(--hero-high-impact-height, 100vh) + 80px)',
         clipPath: 'ellipse(100% 100% at 50% 0%)',
         paddingBottom: '3rem'
       }}
     >
-      <div className="container mb-8 z-10 relative flex items-center justify-center pt-[10.4rem]">
+      <div className="container mb-8 z-10 relative flex items-center justify-center pt-20">
         <div className="max-w-[36.5rem] text-center">
           {richText && <RichText className="mb-6" content={richText} enableGutter={false} />}
           {Array.isArray(links) && links.length > 0 && (
@@ -40,7 +41,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
           )}
         </div>
       </div>
-      <div className="absolute inset-0 min-h-[80vh] select-none">
+      <div className="absolute inset-0 select-none">
         {media && typeof media === 'object' && (
           <Media
             fill
@@ -50,7 +51,12 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
             resource={media}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-deepNavy/60 to-deepNavy/40" />
+        <div
+          className="absolute inset-0 bg-gradient-to-b"
+          style={{
+            background: `linear-gradient(to bottom, rgba(27, 58, 109, var(--hero-overlay-opacity, 0.6)), rgba(27, 58, 109, calc(var(--hero-overlay-opacity, 0.6) - 0.2)))`
+          }}
+        />
       </div>
     </div>
   )

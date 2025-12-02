@@ -14,64 +14,30 @@ export const ServicesGrid: Block = {
       type: 'textarea',
     },
     {
-      name: 'services',
-      type: 'array',
-      required: true,
-      minRows: 1,
-      maxRows: 8,
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-          admin: {
-            placeholder: 'Full-Service Management',
-          },
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          required: true,
-        },
-        {
-          name: 'features',
-          type: 'array',
-          fields: [
-            {
-              name: 'feature',
-              type: 'text',
-              required: true,
-            },
-          ],
-        },
-        {
-          name: 'icon',
-          type: 'select',
-          options: [
-            { label: 'Home', value: 'home' },
-            { label: 'Key', value: 'key' },
-            { label: 'Tool', value: 'tool' },
-            { label: 'Dollar', value: 'dollar' },
-            { label: 'Users', value: 'users' },
-            { label: 'File', value: 'file' },
-          ],
-          defaultValue: 'home',
-        },
-        {
-          name: 'ctaText',
-          type: 'text',
-          admin: {
-            placeholder: 'Learn More',
-          },
-        },
-        {
-          name: 'ctaUrl',
-          type: 'text',
-          admin: {
-            placeholder: '/services',
-          },
-        },
-      ],
+      name: 'limit',
+      type: 'number',
+      defaultValue: 6,
+      min: 1,
+      max: 12,
+      admin: {
+        description: 'Maximum number of services to display',
+      },
+    },
+    {
+      name: 'featuredOnly',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        description: 'Only show featured services',
+      },
+    },
+    {
+      name: 'ctaText',
+      type: 'text',
+      defaultValue: 'Learn More',
+      admin: {
+        description: 'CTA button text for each service card',
+      },
     },
   ],
 }

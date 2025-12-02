@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+import { useHeaderTheme } from '@/providers/HeaderTheme'
+import React, { useEffect } from 'react'
 
 import type { Page } from '@/payload-types'
 
@@ -52,14 +54,24 @@ const renderIcon = (iconType: string) => {
   }
 }
 
-export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText, trustIndicators }) => {
+export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText, showCTA, trustIndicators }) => {
+  const { setHeaderTheme } = useHeaderTheme()
+
+  useEffect(() => {
+    if (media) {
+      setHeaderTheme('dark')
+    }
+  })
+
   return (
     <div
       className={`relative ${media ? 'bg-deepNavy' : 'bg-gradient-to-br from-deepNavy via-deepNavy to-skyBlue'}`}
       style={media ? {
-        clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4rem), 0 100%)',
+        minHeight: 'var(--hero-medium-impact-height, 65vh)',
+        paddingBottom: '3rem'
       } : {
-        clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4rem), 0 100%)',
+        minHeight: '60vh',
+        paddingBottom: '3rem'
       }}
     >
       {/* Background Image with Overlay */}
@@ -71,39 +83,33 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richTex
             priority
             resource={media}
           />
-          {/* Gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-deepNavy/90 via-deepNavy/75 to-deepNavy/60" />
-
-          {/* Animated floating orbs for parallax effect */}
-          <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
-            <div className="absolute top-20 left-20 w-96 h-96 bg-warmGold/30 rounded-full blur-3xl animate-float" />
-            <div
-              className="absolute bottom-40 right-40 w-80 h-80 bg-skyBlue/40 rounded-full blur-3xl animate-float"
-              style={{ animationDelay: '1s', animationDuration: '4s' }}
-            />
-            <div
-              className="absolute top-1/2 left-1/3 w-64 h-64 bg-warmGoldLight/20 rounded-full blur-2xl animate-float"
-              style={{ animationDelay: '2s', animationDuration: '5s' }}
-            />
-          </div>
+          {/* Gradient overlay for text readability - uses design tokens (lighter than HighImpact) */}
+          <div
+            className="absolute inset-0 bg-gradient-to-b"
+            style={{
+              background: `linear-gradient(to bottom, rgba(27, 58, 109, var(--hero-medium-impact-overlay-opacity, 0.45)), rgba(27, 58, 109, calc(var(--hero-medium-impact-overlay-opacity, 0.45) - 0.15)))`
+            }}
+          />
         </div>
       )}
 
-      {/* Hero Content */}
-      <div className={`relative ${media ? 'py-20 md:py-28 lg:py-36' : 'py-16 md:py-20'}`}>
+      {/* Hero Content - positioned higher than center to encourage scrolling */}
+      <div className={`relative flex items-start ${media ? 'pt-40 pb-16 md:pt-48 md:pb-20 lg:pt-56 lg:pb-24' : 'pt-32 pb-16 md:pt-40 md:pb-20'}`}>
 
         {/* Content Container */}
         <div className="container relative z-10">
           <div className="max-w-3xl hero-content">
             {richText && (
               <RichText
-                className="mb-8 text-white"
+                className="mb-8"
                 content={richText}
                 enableGutter={false}
+                enableProse={false}
               />
             )}
 
-            {Array.isArray(links) && links.length > 0 && (
+            {/* CTA Buttons - only shown if showCTA is enabled for MediumImpact heroes */}
+            {showCTA !== false && Array.isArray(links) && links.length > 0 && (
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 {links.map(({ link }, i) => {
                   return (

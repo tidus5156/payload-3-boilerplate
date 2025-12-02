@@ -1,31 +1,35 @@
 import { getPayload } from 'payload'
 import config from '../src/payload.config'
 
-const listUsers = async () => {
+async function listUsers() {
   const payload = await getPayload({ config })
 
-  const users = await payload.find({
-    collection: 'users',
-    limit: 10,
-    select: {
-      email: true,
-      roles: true,
-    },
-  })
-
-  console.log('\n📋 Users in database:\n')
-
-  if (users.docs.length === 0) {
-    console.log('   ⚠️  No users found.')
-    console.log('   ℹ️  Visit http://localhost:3000/admin/create-first-user to create an admin account.\n')
-  } else {
-    users.docs.forEach((user: any) => {
-      console.log(`   • ${user.email} (${user.roles?.join(', ') || 'no roles'})`)
+  try {
+    const users = await payload.find({
+      collection: 'users',
+      limit: 10,
     })
-    console.log('')
-  }
 
-  process.exit(0)
+    console.log('📋 Users in database:', users.totalDocs)
+    console.log('')
+
+    if (users.totalDocs === 0) {
+      console.log('❌ No users found in database')
+      console.log('💡 You may need to create an admin user first')
+      console.log('   Visit: http://localhost:3000/admin')
+    } else {
+      users.docs.forEach(u => {
+        console.log(`  ✓ ${u.email}`)
+        console.log(`    ID: ${u.id}`)
+        console.log(`    Roles: ${u.roles?.join(', ') || 'none'}`)
+        console.log('')
+      })
+    }
+  } catch (error) {
+    console.error('❌ Error listing users:', error)
+  } finally {
+    process.exit(0)
+  }
 }
 
 listUsers()
